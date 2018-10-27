@@ -8,9 +8,11 @@
 
 <body>
 <tiles:insertAttribute name="bodyHeader"/>
+<tiles:insertAttribute name="breadcrumb"/>
 <div class="container mainPart">
     <div class="row" style="margin: 0">
         <div class="col-md-2" style="min-width: 150px; padding : 0">
+            <tiles:insertAttribute name="menu"/>
             <tiles:insertAttribute name="ad"/>
         </div>
         <div class="col-md-10" style="padding: 0">

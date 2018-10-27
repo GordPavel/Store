@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <div>
     <div class="hover14 column">
         <div class="agile_top_brand_left_grid">
@@ -5,7 +6,7 @@
                 <figure>
                     <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                            <a href="single.html"><img title=" " alt=" " src="images/1.png"/></a>
+                            <a href="/product"><img title=" " alt=" " src="images/1.png"/></a>
                             <p>fortune sunflower oil</p>
                         </div>
                     </div>
@@ -19,7 +20,7 @@
                 <figure>
                     <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                            <a href="single.html"><img title=" " alt=" " src="images/1.png"/></a>
+                            <a href="/product"><img title=" " alt=" " src="images/1.png"/></a>
                             <p>fortune sunflower oil</p>
                         </div>
                     </div>
@@ -33,7 +34,7 @@
                 <figure>
                     <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                            <a href="single.html"><img title=" " alt=" " src="images/1.png"/></a>
+                            <a href="/product"><img title=" " alt=" " src="images/1.png"/></a>
                             <p>fortune sunflower oil</p>
                         </div>
                     </div>

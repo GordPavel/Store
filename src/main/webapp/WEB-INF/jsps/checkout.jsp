@@ -197,8 +197,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <tbody>
                     <tr class="rem1">
                         <td class="invert">1</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/1.png" alt=" "
-                                                                            class="img-responsive"></a></td>
+                        <td class="invert-image"><a href="/product"><img src="images/1.png" alt=" "
+                                                                         class="img-responsive"></a></td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
@@ -220,8 +220,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </tr>
                     <tr class="rem2">
                         <td class="invert">2</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/3.png" alt=" "
-                                                                            class="img-responsive"></a></td>
+                        <td class="invert-image"><a href="/product"><img src="images/3.png" alt=" "
+                                                                         class="img-responsive"></a></td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
@@ -243,8 +243,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </tr>
                     <tr class="rem3">
                         <td class="invert">3</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/2.png" alt=" "
-                                                                            class="img-responsive"></a></td>
+                        <td class="invert-image"><a href="/product"><img src="images/2.png" alt=" "
+                                                                         class="img-responsive"></a></td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">

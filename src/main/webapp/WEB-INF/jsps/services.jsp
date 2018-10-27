@@ -253,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             blanditiis
                         </li>
                     </ul>
-                    <a href="single.html">Shop Now</a>
+                    <a href="/product">Shop Now</a>
                 </div>
                 <div class="clearfix"></div>
             </div>

@@ -9,4 +9,13 @@ class JspController {
 	@RequestMapping(value = ["/" , "/index"])
 	fun index() = "index"
 
+	@RequestMapping(value = ["/category"])
+	fun category() = "category"
+
+	@RequestMapping(value = ["/product"])
+	fun product() = "product"
+
+	@RequestMapping(value = ["/login"])
+	fun loginPage() = "login"
+
 }

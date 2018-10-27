@@ -4,19 +4,42 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <!-- Base Define -->
     <definition name="base"
                 template="/WEB-INF/tiles_templates/default_template.jsp">
         <put-attribute name="includeHeader" value="/WEB-INF/common/includeHeader.jsp"/>
         <put-attribute name="bodyHeader" value="/WEB-INF/common/header.jsp"/>
-        <put-attribute name="ad" value="/WEB-INF/common/ad.jsp"/>
+        <put-attribute name="breadcrumb" value="/WEB-INF/common/breadcrumb.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/common/menu.jsp"/>
         <put-attribute name="bodyFooter" value="/WEB-INF/common/footer.jsp"/>
         <put-attribute name="includeFooter" value="/WEB-INF/common/includeFooter.jsp"/>
+
+        <put-attribute name="ad" value=""/>
     </definition>
 
-    <!-- Home Page  -->
-    <definition name="index" extends="base">
+    <definition name="withAd" extends="base">
+        <put-attribute name="ad" value="/WEB-INF/common/ad.jsp"/>
+    </definition>
+
+    <!-- Pages -->
+
+    <definition name="index" extends="withAd">
         <put-attribute name="title" value="ZooСамара"/>
         <put-attribute name="main" value="/WEB-INF/jsps/index.jsp"/>
     </definition>
+
+    <definition name="category" extends="withAd">
+        <put-attribute name="title" value="Категория"/>
+        <put-attribute name="main" value="/WEB-INF/jsps/category.jsp"/>
+    </definition>
+
+    <definition name="product" extends="withAd">
+        <put-attribute name="title" value="Категория"/>
+        <put-attribute name="main" value="/WEB-INF/jsps/product.jsp"/>
+    </definition>
+
+    <definition name="login" extends="base">
+        <put-attribute name="title" value="Войти в профиль"/>
+        <put-attribute name="main" value="/WEB-INF/jsps/login.jsp"/>
+    </definition>
+
 </tiles-definitions>
