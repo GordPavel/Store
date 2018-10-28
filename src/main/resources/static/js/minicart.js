@@ -12,14 +12,14 @@
 	function s(o, u) {
 		if (!n[o]) {
 			if (!t[o]) {
-				var a = typeof require == "function" && require;
+				const a = typeof require == "function" && require;
 				if (!u && a) return a(o, !0);
 				if (i) return i(o, !0);
 				throw new Error("Cannot find module '" + o + "'")
 			}
-			var f = n[o] = {exports: {}};
+			const f = n[o] = {exports: {}};
 			t[o][0].call(f.exports, function (e) {
-				var n = t[o][1][e];
+				const n = t[o][1][e];
 				return s(n ? n : e)
 			}, f, f.exports, e, t, n, r)
 		}
@@ -39,8 +39,8 @@
 // the other modules.
 //
 
-		var toString = Object.prototype.toString;
-		var hasOwnProperty = Object.prototype.hasOwnProperty;
+		const toString = Object.prototype.toString;
+		const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 // Array.isArray is supported in IE9
 		function isArray(xs) {
@@ -52,7 +52,7 @@
 // Array.prototype.indexOf is supported in IE9
 		exports.indexOf = function indexOf(xs, x) {
 			if (xs.indexOf) return xs.indexOf(x);
-			for (var i = 0; i < xs.length; i++) {
+			for (let i = 0; i < xs.length; i++) {
 				if (x === xs[i]) return i;
 			}
 			return -1;
@@ -61,8 +61,8 @@
 // Array.prototype.filter is supported in IE9
 		exports.filter = function filter(xs, fn) {
 			if (xs.filter) return xs.filter(fn);
-			var res = [];
-			for (var i = 0; i < xs.length; i++) {
+			const res = [];
+			for (let i = 0; i < xs.length; i++) {
 				if (fn(xs[i], i, xs)) res.push(xs[i]);
 			}
 			return res;
@@ -71,7 +71,7 @@
 // Array.prototype.forEach is supported in IE9
 		exports.forEach = function forEach(xs, fn, self) {
 			if (xs.forEach) return xs.forEach(fn, self);
-			for (var i = 0; i < xs.length; i++) {
+			for (let i = 0; i < xs.length; i++) {
 				fn.call(self, xs[i], i, xs);
 			}
 		};
@@ -79,8 +79,8 @@
 // Array.prototype.map is supported in IE9
 		exports.map = function map(xs, fn) {
 			if (xs.map) return xs.map(fn);
-			var out = new Array(xs.length);
-			for (var i = 0; i < xs.length; i++) {
+			const out = new Array(xs.length);
+			for (let i = 0; i < xs.length; i++) {
 				out[i] = fn(xs[i], i, xs);
 			}
 			return out;
@@ -89,13 +89,15 @@
 // Array.prototype.reduce is supported in IE9
 		exports.reduce = function reduce(array, callback, opt_initialValue) {
 			if (array.reduce) return array.reduce(callback, opt_initialValue);
-			var value, isValueSet = false;
+			let value, isValueSet = false;
 
 			if (2 < arguments.length) {
 				value = opt_initialValue;
 				isValueSet = true;
 			}
-			for (var i = 0, l = array.length; l > i; ++i) {
+			let i = 0;
+			const l = array.length;
+			for (; l > i; ++i) {
 				if (array.hasOwnProperty(i)) {
 					if (isValueSet) {
 						value = callback(value, array[i], i, array);
@@ -133,10 +135,10 @@
 
 // Function.prototype.bind is supported in IE9
 		exports.bind = function () {
-			var args = Array.prototype.slice.call(arguments);
-			var fn = args.shift();
+			const args = Array.prototype.slice.call(arguments);
+			const fn = args.shift();
 			if (fn.bind) return fn.bind.apply(fn, args);
-			var self = args.shift();
+			const self = args.shift();
 			return function () {
 				fn.apply(self, args.concat([Array.prototype.slice.call(arguments)]));
 			};
@@ -144,7 +146,7 @@
 
 // Object.create is supported in IE9
 		function create(prototype, properties) {
-			var object;
+			let object;
 			if (prototype === null) {
 				object = {'__proto__': null};
 			}
@@ -154,7 +156,7 @@
 						'typeof prototype[' + (typeof prototype) + '] != \'object\''
 					);
 				}
-				var Type = function () {
+				const Type = function () {
 				};
 				Type.prototype = prototype;
 				object = new Type();
@@ -179,8 +181,8 @@
 				throw new TypeError("Object.keys called on a non-object");
 			}
 
-			var result = [];
-			for (var name in object) {
+			const result = [];
+			for (let name in object) {
 				if (hasOwnProperty.call(object, name)) {
 					result.push(name);
 				}
@@ -196,19 +198,19 @@
 				throw new TypeError("Object.getOwnPropertyNames called on a non-object");
 			}
 
-			var result = keysShim(object);
+			const result = keysShim(object);
 			if (exports.isArray(object) && exports.indexOf(object, 'length') === -1) {
 				result.push('length');
 			}
 			return result;
 		}
 
-		var keys = typeof Object.keys === 'function' ? Object.keys : keysShim;
-		var getOwnPropertyNames = typeof Object.getOwnPropertyNames === 'function' ?
+		const keys = typeof Object.keys === 'function' ? Object.keys : keysShim;
+		const getOwnPropertyNames = typeof Object.getOwnPropertyNames === 'function' ?
 			Object.getOwnPropertyNames : propertyShim;
 
 		if (new Error().hasOwnProperty('description')) {
-			var ERROR_PROPERTY_FILTER = function (obj, array) {
+			const ERROR_PROPERTY_FILTER = function (obj, array) {
 				if (toString.call(obj) === '[object Error]') {
 					array = exports.filter(array, function (name) {
 						return name !== 'description' && name !== 'number' && name !== 'message';
@@ -258,7 +260,7 @@
 // untraditional implementation of this module.
 
 	}, {}], 3: [function (require, module, exports) {
-		var process = require("__browserify_process");// Copyright Joyent, Inc. and other Node contributors.
+		const process = require("__browserify_process");// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -279,8 +281,8 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-		var util = require('util');
-		var shims = require('_shims');
+		const util = require('util');
+		const shims = require('_shims');
 
 // resolves . and .. elements in a path array with directory names there
 // must be no slashes, empty elements, or device names (c:\) in the array
@@ -288,9 +290,9 @@
 // relative and absolute paths)
 		function normalizeArray(parts, allowAboveRoot) {
 			// if the path tries to go above the root, `up` ends up > 0
-			var up = 0;
-			for (var i = parts.length - 1; i >= 0; i--) {
-				var last = parts[i];
+			let up = 0;
+			for (let i = parts.length - 1; i >= 0; i--) {
+				const last = parts[i];
 				if (last === '.') {
 					parts.splice(i, 1);
 				} else if (last === '..') {
@@ -314,20 +316,20 @@
 
 // Split a filename into [root, dir, basename, ext], unix version
 // 'root' is just a slash, or nothing.
-		var splitPathRe =
+		const splitPathRe =
 			/^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
-		var splitPath = function (filename) {
+		const splitPath = function (filename) {
 			return splitPathRe.exec(filename).slice(1);
 		};
 
 // path.resolve([from ...], to)
 // posix version
 		exports.resolve = function () {
-			var resolvedPath = '',
+			let resolvedPath = '',
 				resolvedAbsolute = false;
 
-			for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-				var path = (i >= 0) ? arguments[i] : process.cwd();
+			for (let i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+				let path = (i >= 0) ? arguments[i] : process.cwd();
 
 				// Skip empty and invalid entries
 				if (!util.isString(path)) {
@@ -354,8 +356,8 @@
 // path.normalize(path)
 // posix version
 		exports.normalize = function (path) {
-			var isAbsolute = exports.isAbsolute(path),
-				trailingSlash = shims.substr(path, -1) === '/';
+			let isAbsolute = exports.isAbsolute(path);
+			const trailingSlash = shims.substr(path, -1) === '/';
 
 			// Normalize the path
 			path = normalizeArray(shims.filter(path.split('/'), function (p) {
@@ -379,7 +381,7 @@
 
 // posix version
 		exports.join = function () {
-			var paths = Array.prototype.slice.call(arguments, 0);
+			const paths = Array.prototype.slice.call(arguments, 0);
 			return exports.normalize(shims.filter(paths, function (p, index) {
 				if (!util.isString(p)) {
 					throw new TypeError('Arguments to path.join must be strings');
@@ -396,12 +398,12 @@
 			to = exports.resolve(to).substr(1);
 
 			function trim(arr) {
-				var start = 0;
+				let start = 0;
 				for (; start < arr.length; start++) {
 					if (arr[start] !== '') break;
 				}
 
-				var end = arr.length - 1;
+				let end = arr.length - 1;
 				for (; end >= 0; end--) {
 					if (arr[end] !== '') break;
 				}
@@ -410,11 +412,12 @@
 				return arr.slice(start, end - start + 1);
 			}
 
-			var fromParts = trim(from.split('/'));
-			var toParts = trim(to.split('/'));
+			const fromParts = trim(from.split('/'));
+			const toParts = trim(to.split('/'));
 
-			var length = Math.min(fromParts.length, toParts.length);
-			var samePartsLength = length;
+			const length = Math.min(fromParts.length, toParts.length);
+			let samePartsLength = length;
+			// noinspection Annotator
 			for (var i = 0; i < length; i++) {
 				if (fromParts[i] !== toParts[i]) {
 					samePartsLength = i;
@@ -422,7 +425,7 @@
 				}
 			}
 
-			var outputParts = [];
+			let outputParts = [];
 			for (var i = samePartsLength; i < fromParts.length; i++) {
 				outputParts.push('..');
 			}
@@ -436,8 +439,8 @@
 		exports.delimiter = ':';
 
 		exports.dirname = function (path) {
-			var result = splitPath(path),
-				root = result[0],
+			const result = splitPath(path);
+			let root = result[0],
 				dir = result[1];
 
 			if (!root && !dir) {
@@ -455,8 +458,7 @@
 
 
 		exports.basename = function (path, ext) {
-			var f = splitPath(path)[2];
-			// TODO: make this comparison case-insensitive on windows?
+			let f = splitPath(path)[2];
 			if (ext && f.substr(-1 * ext.length) === ext) {
 				f = f.substr(0, f.length - ext.length);
 			}
@@ -490,12 +492,12 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-		var shims = require('_shims');
+		const shims = require('_shims');
 
-		var formatRegExp = /%[sdj%]/g;
+		const formatRegExp = /%[sdj%]/g;
 		exports.format = function (f) {
 			if (!isString(f)) {
-				var objects = [];
+				const objects = [];
 				for (var i = 0; i < arguments.length; i++) {
 					objects.push(inspect(arguments[i]));
 				}
@@ -503,9 +505,9 @@
 			}
 
 			var i = 1;
-			var args = arguments;
-			var len = args.length;
-			var str = String(f).replace(formatRegExp, function (x) {
+			const args = arguments;
+			const len = args.length;
+			let str = String(f).replace(formatRegExp, function (x) {
 				if (x === '%%') return '%';
 				if (i >= len) return x;
 				switch (x) {
@@ -544,7 +546,7 @@
 		/* legacy: obj, showHidden, depth, colors*/
 		function inspect(obj, opts) {
 			// default options
-			var ctx = {
+			const ctx = {
 				seen: [],
 				stylize: stylizeNoColor
 			};
@@ -602,7 +604,7 @@
 
 
 		function stylizeWithColor(str, styleType) {
-			var style = inspect.styles[styleType];
+			const style = inspect.styles[styleType];
 
 			if (style) {
 				return '\u001b[' + inspect.colors[style][0] + 'm' + str +
@@ -619,7 +621,7 @@
 
 
 		function arrayToHash(array) {
-			var hash = {};
+			const hash = {};
 
 			shims.forEach(array, function (val, idx) {
 				hash[val] = true;
@@ -639,7 +641,7 @@
 				value.inspect !== exports.inspect &&
 				// Also filter out any prototype objects using the circular check.
 				!(value.constructor && value.constructor.prototype === value)) {
-				var ret = value.inspect(recurseTimes);
+				let ret = value.inspect(recurseTimes);
 				if (!isString(ret)) {
 					ret = formatValue(ctx, ret, recurseTimes);
 				}
@@ -647,14 +649,14 @@
 			}
 
 			// Primitive types cannot have properties
-			var primitive = formatPrimitive(ctx, value);
+			const primitive = formatPrimitive(ctx, value);
 			if (primitive) {
 				return primitive;
 			}
 
 			// Look up the keys of the object.
-			var keys = shims.keys(value);
-			var visibleKeys = arrayToHash(keys);
+			let keys = shims.keys(value);
+			const visibleKeys = arrayToHash(keys);
 
 			if (ctx.showHidden) {
 				keys = shims.getOwnPropertyNames(value);
@@ -663,7 +665,7 @@
 			// Some type of object without properties can be shortcutted.
 			if (keys.length === 0) {
 				if (isFunction(value)) {
-					var name = value.name ? ': ' + value.name : '';
+					const name = value.name ? ': ' + value.name : '';
 					return ctx.stylize('[Function' + name + ']', 'special');
 				}
 				if (isRegExp(value)) {
@@ -677,7 +679,7 @@
 				}
 			}
 
-			var base = '', array = false, braces = ['{', '}'];
+			let base = '', array = false, braces = ['{', '}'];
 
 			// Make Array say that they are Array
 			if (isArray(value)) {
@@ -687,7 +689,7 @@
 
 			// Make functions say that they are functions
 			if (isFunction(value)) {
-				var n = value.name ? ': ' + value.name : '';
+				const n = value.name ? ': ' + value.name : '';
 				base = ' [Function' + n + ']';
 			}
 
@@ -720,7 +722,7 @@
 
 			ctx.seen.push(value);
 
-			var output;
+			let output;
 			if (array) {
 				output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
 			} else {
@@ -739,7 +741,7 @@
 			if (isUndefined(value))
 				return ctx.stylize('undefined', 'undefined');
 			if (isString(value)) {
-				var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+				const simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
 					.replace(/'/g, "\\'")
 					.replace(/\\"/g, '"') + '\'';
 				return ctx.stylize(simple, 'string');
@@ -760,8 +762,10 @@
 
 
 		function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
-			var output = [];
-			for (var i = 0, l = value.length; i < l; ++i) {
+			const output = [];
+			let i = 0;
+			const l = value.length;
+			for (; i < l; ++i) {
 				if (hasOwnProperty(value, String(i))) {
 					output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
 						String(i), true));
@@ -781,7 +785,7 @@
 
 
 		function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
-			var name, str, desc;
+			let name, str, desc;
 			desc = shims.getOwnPropertyDescriptor(value, key) || {value: value[key]};
 			if (desc.get) {
 				if (desc.set) {
@@ -841,8 +845,8 @@
 
 
 		function reduceToSingleString(output, base, braces) {
-			var numLinesEst = 0;
-			var length = shims.reduce(output, function (prev, cur) {
+			let numLinesEst = 0;
+			const length = shims.reduce(output, function (prev, cur) {
 				numLinesEst++;
 				if (cur.indexOf('\n') >= 0) numLinesEst++;
 				return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
@@ -972,13 +976,13 @@
 		}
 
 
-		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+		const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
 			'Oct', 'Nov', 'Dec'];
 
 // 26 Feb 16:19:34
 		function timestamp() {
-			var d = new Date();
-			var time = [pad(d.getHours()),
+			const d = new Date();
+			const time = [pad(d.getHours()),
 				pad(d.getMinutes()),
 				pad(d.getSeconds())].join(':');
 			return [d.getDate(), months[d.getMonth()], time].join(' ');
@@ -1020,8 +1024,8 @@
 			// Don't do anything if add isn't an object
 			if (!add || !isObject(add)) return origin;
 
-			var keys = shims.keys(add);
-			var i = keys.length;
+			const keys = shims.keys(add);
+			let i = keys.length;
 			while (i--) {
 				origin[keys[i]] = add[keys[i]];
 			}
@@ -1035,12 +1039,12 @@
 	}, {"_shims": 1}], 5: [function (require, module, exports) {
 // shim for using process in browser
 
-		var process = module.exports = {};
+		const process = module.exports = {};
 
 		process.nextTick = (function () {
-			var canSetImmediate = typeof window !== 'undefined'
+			const canSetImmediate = typeof window !== 'undefined'
 				&& window.setImmediate;
-			var canPost = typeof window !== 'undefined'
+			const canPost = typeof window !== 'undefined'
 				&& window.postMessage && window.addEventListener
 			;
 
@@ -1051,13 +1055,13 @@
 			}
 
 			if (canPost) {
-				var queue = [];
+				const queue = [];
 				window.addEventListener('message', function (ev) {
-					var source = ev.source;
+					const source = ev.source;
 					if ((source === window || source === null) && ev.data === 'process-tick') {
 						ev.stopPropagation();
 						if (queue.length > 0) {
-							var fn = queue.shift();
+							const fn = queue.shift();
 							fn();
 						}
 					}
@@ -1083,7 +1087,6 @@
 			throw new Error('process.binding is not supported');
 		};
 
-// TODO(shtylman)
 		process.cwd = function () {
 			return '/'
 		};
@@ -1102,10 +1105,9 @@
 		/**
 		 * Module dependencies.
 		 */
-
-		var utils = require('./utils')
-			, path = require('path')
-			, dirname = path.dirname
+		const utils = require('./utils')
+		;let path = require('path')
+		;const dirname = path.dirname
 			, extname = path.extname
 			, join = path.join
 			, fs = require('fs')
@@ -1116,16 +1118,14 @@
 		 *
 		 * @type Object
 		 */
-
-		var filters = exports.filters = require('./filters');
+		const filters = exports.filters = require('./filters');
 
 		/**
 		 * Intermediate js cache.
 		 *
 		 * @type Object
 		 */
-
-		var cache = {};
+		let cache = {};
 
 		/**
 		 * Clear intermediate js cache.
@@ -1147,9 +1147,9 @@
 
 		function filtered(js) {
 			return js.substr(1).split('|').reduce(function (js, filter) {
-				var parts = filter.split(':')
+				const parts = filter.split(':')
 					, name = parts.shift()
-					, args = parts.join(':') || '';
+				;let args = parts.join(':') || '';
 				if (args) args = ', ' + args;
 				return 'filters.' + name + '(' + js + args + ')';
 			});
@@ -1167,13 +1167,13 @@
 		 */
 
 		function rethrow(err, str, filename, lineno) {
-			var lines = str.split('\n')
+			const lines = str.split('\n')
 				, start = Math.max(lineno - 3, 0)
 				, end = Math.min(lines.length, lineno + 3);
 
 			// Error context
-			var context = lines.slice(start, end).map(function (line, i) {
-				var curr = i + start + 1;
+			const context = lines.slice(start, end).map(function (line, i) {
+				const curr = i + start + 1;
 				return (curr == lineno ? ' >> ' : '    ')
 					+ curr
 					+ '| '
@@ -1197,8 +1197,7 @@
 		 * @return {String}
 		 * @api public
 		 */
-
-		var parse = exports.parse = function (str, options) {
+		const parse = exports.parse = function (str, options) {
 			var options = options || {}
 				, open = options.open || exports.open || '<%'
 				, close = options.close || exports.close || '%>'
@@ -1210,15 +1209,18 @@
 			if (false !== options._with) buf += '\nwith (locals || {}) { (function(){ ';
 			buf += '\n buf.push(\'';
 
-			var lineno = 1;
+			let lineno = 1;
 
-			var consumeEOL = false;
-			for (var i = 0, len = str.length; i < len; ++i) {
-				var stri = str[i];
+			let consumeEOL = false;
+			let i = 0;
+			const len = str.length;
+			for (; i < len; ++i) {
+				const stri = str[i];
 				if (str.slice(i, open.length + i) == open) {
 					i += open.length;
 
-					var prefix, postfix, line = (compileDebug ? '__stack.lineno=' : '') + lineno;
+					let prefix, postfix;
+					const line = (compileDebug ? '__stack.lineno=' : '') + lineno;
 					switch (str[i]) {
 						case '=':
 							prefix = "', escape((" + line + ', ';
@@ -1235,10 +1237,10 @@
 							postfix = "; buf.push('";
 					}
 
-					var end = str.indexOf(close, i)
-						, js = str.substring(i, end)
-						, start = i
-						, include = null
+					const end = str.indexOf(close, i)
+					;let js = str.substring(i, end)
+					;const start = i
+					;let include = null
 						, n = 0;
 
 					if ('-' == js[js.length - 1]) {
@@ -1247,9 +1249,9 @@
 					}
 
 					if (0 == js.trim().indexOf('include')) {
-						var name = js.trim().slice(7).trim();
+						const name = js.trim().slice(7).trim();
 						if (!filename) throw new Error('filename option is required for includes');
-						var path = resolveInclude(name, filename);
+						const path = resolveInclude(name, filename);
 						include = read(path, 'utf8');
 						include = exports.parse(include, {
 							filename: path,
@@ -1303,12 +1305,11 @@
 		 * @return {Function}
 		 * @api public
 		 */
-
-		var compile = exports.compile = function (str, options) {
+		const compile = exports.compile = function (str, options) {
 			options = options || {};
-			var escape = options.escape || utils.escape;
+			const escape = options.escape || utils.escape;
 
-			var input = JSON.stringify(str)
+			const input = JSON.stringify(str)
 				, compileDebug = options.compileDebug !== false
 				, client = options.client
 				, filename = options.filename
@@ -1398,7 +1399,7 @@
 		 */
 
 		exports.renderFile = function (path, options, fn) {
-			var key = path + ':string';
+			const key = path + ':string';
 
 			if ('function' == typeof options) {
 				fn = options, options = {};
@@ -1406,7 +1407,7 @@
 
 			options.filename = path;
 
-			var str;
+			let str;
 			try {
 				str = options.cache
 					? cache[key] || (cache[key] = read(path, 'utf8'))
@@ -1428,8 +1429,8 @@
 		 */
 
 		function resolveInclude(name, filename) {
-			var path = join(dirname(filename), name);
-			var ext = extname(name);
+			let path = join(dirname(filename), name);
+			let ext = extname(name);
 			if (!ext) path += '.ejs';
 			return path;
 		}
@@ -1445,7 +1446,7 @@
 		if (require.extensions) {
 			require.extensions['.ejs'] = function (module, filename) {
 				filename = filename || module.filename;
-				var options = {filename: filename, client: true}
+				const options = {filename: filename, client: true}
 					, template = fs.readFileSync(filename).toString()
 					, fn = compile(template, options);
 				module._compile('module.exports = ' + fn.toString() + ';', filename);
@@ -1689,7 +1690,7 @@
 		'use strict';
 
 
-		var Product = require('./product'),
+		const Product = require('./product'),
 			Pubsub = require('./util/pubsub'),
 			Storage = require('./util/storage'),
 			constants = require('./constants'),
@@ -1705,7 +1706,7 @@
 		 * @param {duration} number Time in milliseconds that the cart data should persist
 		 */
 		function Cart(name, duration) {
-			var data, items, settings, len, i;
+			let data, items, settings, len, i;
 
 			this._items = [];
 			this._settings = {bn: constants.BN};
@@ -1741,9 +1742,9 @@
 		 * @return {number} Item location in the cart
 		 */
 		Cart.prototype.add = function add(data) {
-			var that = this,
-				items = this.items(),
-				idx = false,
+			const that = this,
+				items = this.items();
+			let idx = false,
 				isExisting = false,
 				product, key, len, i;
 
@@ -1819,7 +1820,7 @@
 		 * @return {number|string}
 		 */
 		Cart.prototype.discount = function discount(config) {
-			var result = parseFloat(this.settings('discount_amount_cart')) || 0;
+			let result = parseFloat(this.settings('discount_amount_cart')) || 0;
 
 			if (!result) {
 				result = (parseFloat(this.settings('discount_rate_cart')) || 0) * this.subtotal() / 100;
@@ -1839,8 +1840,8 @@
 		 * @return {number|string}
 		 */
 		Cart.prototype.subtotal = function subtotal(config) {
-			var products = this.items(),
-				result = 0,
+			const products = this.items();
+			let result = 0,
 				i, len;
 
 			for (i = 0, len = products.length; i < len; i++) {
@@ -1861,7 +1862,7 @@
 		 * @return {number|string}
 		 */
 		Cart.prototype.total = function total(config) {
-			var result = 0;
+			let result = 0;
 
 			result += this.subtotal();
 			result -= this.discount();
@@ -1880,7 +1881,7 @@
 		 * @return {boolean}
 		 */
 		Cart.prototype.remove = function remove(idx) {
-			var item = this._items.splice(idx, 1);
+			const item = this._items.splice(idx, 1);
 
 			if (this._items.length === 0) {
 				this.destroy();
@@ -1899,10 +1900,10 @@
 		 * Saves the cart data.
 		 */
 		Cart.prototype.save = function save() {
-			var items = this.items(),
+			const items = this.items(),
 				settings = this.settings(),
-				data = [],
-				i, len;
+				data = [];
+			let i, len;
 
 			for (i = 0, len = items.length; i < len; i++) {
 				data.push(items[i].get());
@@ -1952,10 +1953,10 @@
 		'use strict';
 
 
-		var mixin = require('./util/mixin');
+		const mixin = require('./util/mixin');
 
 
-		var defaults = module.exports = {
+		const defaults = module.exports = {
 
 			name: 'PPMiniCart',
 
@@ -2027,11 +2028,11 @@
 		'use strict';
 
 
-		var Cart = require('./cart'),
+		const Cart = require('./cart'),
 			View = require('./view'),
 			config = require('./config'),
-			minicart = {},
-			cartModel,
+			minicart = {};
+		let cartModel,
 			confModel,
 			viewModel;
 
@@ -2082,12 +2083,12 @@
 		'use strict';
 
 
-		var currency = require('./util/currency'),
+		const currency = require('./util/currency'),
 			Pubsub = require('./util/pubsub'),
 			mixin = require('./util/mixin');
 
 
-		var parser = {
+		const parser = {
 			quantity: function (value) {
 				value = parseInt(value, 10);
 
@@ -2153,7 +2154,7 @@
 		 * @param {string} value
 		 */
 		Product.prototype.set = function set(key, value) {
-			var setter = parser[key];
+			const setter = parser[key];
 
 			this._data[key] = setter ? setter(value) : value;
 			this._options = null;
@@ -2171,7 +2172,7 @@
 		 * @return {object}
 		 */
 		Product.prototype.options = function options() {
-			var result, key, value, amount, i, j;
+			let result, key, value, amount, i, j;
 
 			if (!this._options) {
 				result = [];
@@ -2214,7 +2215,7 @@
 		 * @return {number|string}
 		 */
 		Product.prototype.discount = function discount(config) {
-			var flat, rate, num, limit, result, amount;
+			let flat, rate, num, limit, result, amount;
 
 			if (!this._discount) {
 				result = 0;
@@ -2247,7 +2248,7 @@
 		 * @return {number|string}
 		 */
 		Product.prototype.amount = function amount(config) {
-			var result, options, len, i;
+			let result, options, len, i;
 
 			if (!this._amount) {
 				result = this.get('amount');
@@ -2271,7 +2272,7 @@
 		 * @return {number|string}
 		 */
 		Product.prototype.total = function total(config) {
-			var result;
+			let result;
 
 			if (!this._total) {
 				result = this.get('quantity') * this.amount();
@@ -2291,7 +2292,7 @@
 		 * @return {boolean}
 		 */
 		Product.prototype.isEqual = function isEqual(data) {
-			var match = false;
+			let match = false;
 
 			if (data instanceof Product) {
 				data = data._data;
@@ -2300,7 +2301,7 @@
 			if (this.get('item_name') === data.item_name) {
 				if (this.get('item_number') === data.item_number) {
 					if (this.get('amount') === parser.amount(data.amount)) {
-						var i = 0;
+						let i = 0;
 
 						match = true;
 
@@ -2349,7 +2350,7 @@
 
 
 		module.exports.add = function add(el, str) {
-			var re;
+			let re;
 
 			if (!el) {
 				return false;
@@ -2368,7 +2369,7 @@
 
 
 		module.exports.remove = function remove(el, str) {
-			var re;
+			let re;
 
 			if (!el) {
 				return false;
@@ -2387,7 +2388,7 @@
 
 
 		module.exports.inject = function inject(el, str) {
-			var style;
+			let style;
 
 			if (!el) {
 				return false;
@@ -2411,7 +2412,7 @@
 		'use strict';
 
 
-		var currencies = {
+		const currencies = {
 			AED: {before: '\u062c'},
 			ANG: {before: '\u0192'},
 			ARS: {before: '$', code: true},
@@ -2477,13 +2478,13 @@
 
 
 		module.exports = function currency(amount, config) {
-			var code = config && config.currency || 'USD',
+			const code = config && config.currency || 'USD',
 				value = currencies[code],
 				before = value.before || '',
 				after = value.after || '',
 				length = value.length || 2,
-				showCode = value.code && config && config.showCode,
-				result = amount;
+				showCode = value.code && config && config.showCode;
+			let result = amount;
 
 			if (config && config.format) {
 				result = before + result.toFixed(length) + after;
@@ -2505,7 +2506,7 @@
 			/**
 			 * Events are added here for easy reference
 			 */
-			var cache = [];
+			let cache = [];
 
 			// NOOP for Node
 			if (!document) {
@@ -2529,7 +2530,7 @@
 					add: function (obj, type, fn, scope) {
 						scope = scope || obj;
 
-						var wrappedFn = function (e) {
+						const wrappedFn = function (e) {
 							fn.call(scope, e);
 						};
 
@@ -2546,7 +2547,9 @@
 					 * @param fn {function} The function
 					 */
 					remove: function (obj, type, fn) {
-						var wrappedFn, item, len = cache.length, i;
+						let wrappedFn, item;
+						const len = cache.length;
+						let i;
 
 						for (i = 0; i < len; i++) {
 							item = cache[i];
@@ -2578,8 +2581,8 @@
 					add: function (obj, type, fn, scope) {
 						scope = scope || obj;
 
-						var wrappedFn = function () {
-							var e = window.event;
+						const wrappedFn = function () {
+							const e = window.event;
 							e.target = e.target || e.srcElement;
 
 							e.preventDefault = function () {
@@ -2602,7 +2605,9 @@
 					 * @param fn {function} The function
 					 */
 					remove: function (obj, type, fn) {
-						var wrappedFn, item, len = cache.length, i;
+						let wrappedFn, item;
+						const len = cache.length;
+						let i;
 
 						for (i = 0; i < len; i++) {
 							item = cache[i];
@@ -2627,12 +2632,12 @@
 		'use strict';
 
 
-		var forms = module.exports = {
+		const forms = module.exports = {
 
 			parse: function parse(form) {
-				var raw = form.elements,
-					data = {},
-					pair, value, i, len;
+				const raw = form.elements,
+					data = {};
+				let pair, value, i, len;
 
 				for (i = 0, len = raw.length; i < len; i++) {
 					pair = raw[i];
@@ -2647,7 +2652,7 @@
 
 
 			getInputValue: function getInputValue(input) {
-				var tag = input.tagName.toLowerCase();
+				const tag = input.tagName.toLowerCase();
 
 				if (tag === 'select') {
 					return input.options[input.selectedIndex].value;
@@ -2669,10 +2674,10 @@
 		'use strict';
 
 
-		var mixin = module.exports = function mixin(dest, source) {
-			var value;
+		const mixin = module.exports = function mixin(dest, source) {
+			let value;
 
-			for (var key in source) {
+			for (let key in source) {
 				value = source[key];
 
 				if (value && value.constructor === Object) {
@@ -2699,7 +2704,7 @@
 
 
 		Pubsub.prototype.on = function on(name, fn, scope) {
-			var cache = this._eventCache[name];
+			let cache = this._eventCache[name];
 
 			if (!cache) {
 				cache = this._eventCache[name] = [];
@@ -2710,7 +2715,7 @@
 
 
 		Pubsub.prototype.off = function off(name, fn) {
-			var cache = this._eventCache[name],
+			let cache = this._eventCache[name],
 				i, len;
 
 			if (cache) {
@@ -2724,7 +2729,8 @@
 
 
 		Pubsub.prototype.fire = function on(name) {
-			var cache = this._eventCache[name], i, len, fn, scope;
+			const cache = this._eventCache[name];
+			let i, len, fn, scope;
 
 			if (cache) {
 				for (i = 0, len = cache.length; i < len; i++) {
@@ -2745,18 +2751,18 @@
 		'use strict';
 
 
-		var Storage = module.exports = function Storage(name, duration) {
+		const Storage = module.exports = function Storage(name, duration) {
 			this._name = name;
 			this._duration = duration || 30;
 		};
 
 
-		var proto = Storage.prototype;
+		const proto = Storage.prototype;
 
 
 		proto.load = function () {
 			if (typeof window === 'object' && window.localStorage) {
-				var data = window.localStorage.getItem(this._name), today, expires;
+				let data = window.localStorage.getItem(this._name), today, expires;
 
 				if (data) {
 					data = JSON.parse(decodeURIComponent(data));
@@ -2779,7 +2785,8 @@
 
 		proto.save = function (data) {
 			if (typeof window === 'object' && window.localStorage) {
-				var expires = new Date(), wrapped;
+				const expires = new Date();
+				let wrapped;
 
 				expires.setTime(expires.getTime() + this._duration * 24 * 60 * 60 * 1000);
 
@@ -2803,7 +2810,7 @@
 		'use strict';
 
 
-		var ejs = require('ejs');
+		const ejs = require('ejs');
 
 
 		module.exports = function template(str, data) {
@@ -2822,7 +2829,7 @@
 		'use strict';
 
 
-		var config = require('./config'),
+		const config = require('./config'),
 			events = require('./util/events'),
 			template = require('./util/template'),
 			forms = require('./util/forms'),
@@ -2838,7 +2845,7 @@
 		 * @param {object} model
 		 */
 		function View(model) {
-			var wrapper;
+			let wrapper;
 
 			this.el = wrapper = document.createElement('div');
 			this.model = model;
@@ -2906,7 +2913,7 @@
 		 * @return {boolean}
 		 */
 		View.prototype.bind = function bind(form) {
-			var that = this;
+			const that = this;
 
 			// Don't bind forms without a cmd value
 			if (!constants.COMMANDS[form.cmd.value]) {
@@ -2946,7 +2953,7 @@
 			this.redraw();
 			this.show();
 
-			var els = this.el.querySelectorAll('.' + constants.ITEM_CLASS);
+			const els = this.el.querySelectorAll('.' + constants.ITEM_CLASS);
 			css.add(els[idx], constants.ITEM_CHANGED_CLASS);
 		};
 
@@ -2961,7 +2968,7 @@
 			this.redraw();
 			this.show();
 
-			var els = this.el.querySelectorAll('.' + constants.ITEM_CLASS);
+			const els = this.el.querySelectorAll('.' + constants.ITEM_CLASS);
 			css.add(els[idx], constants.ITEM_CHANGED_CLASS);
 		};
 
@@ -2990,16 +2997,16 @@
 		'use strict';
 
 
-		var constants = require('./constants'),
-			events = require('./util/events'),
-			viewevents;
+		const constants = require('./constants'),
+			events = require('./util/events');
+		let viewevents;
 
 
 		module.exports = viewevents = {
 
 			click: function (evt) {
-				var target = evt.target,
-					className = target.className;
+				let target = evt.target;
+				const className = target.className;
 
 				if (this.isShowing) {
 					// Cart close button
@@ -3028,13 +3035,13 @@
 
 
 			keyup: function (evt) {
-				var that = this,
-					target = evt.target,
-					timer;
+				const that = this,
+					target = evt.target;
+				let timer;
 
 				if (target.className === constants.QUANTITY_CLASS) {
 					timer = setTimeout(function () {
-						var idx = parseInt(target.getAttribute(constants.DATA_IDX), 10),
+						const idx = parseInt(target.getAttribute(constants.DATA_IDX), 10),
 							cart = that.model.cart,
 							product = cart.items(idx),
 							quantity = parseInt(target.value, 10);
@@ -3053,7 +3060,7 @@
 
 			readystatechange: function () {
 				if (/interactive|complete/.test(document.readyState)) {
-					var forms, form, i, len;
+					let forms, form, i, len;
 
 					// Bind to page's forms
 					forms = document.getElementsByTagName('form');

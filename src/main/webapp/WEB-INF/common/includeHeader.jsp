@@ -19,11 +19,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //font-awesome icons -->
     <!-- js -->
     <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jsrender.min.js"></script>
     <!-- //js -->
-    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic'
-          rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-          rel='stylesheet' type='text/css'>
+    <link href='/fonts/google_ubuntu_font' rel='stylesheet' type='text/css'>
+    <link href='/fonts/google_sans_font' rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="/js/move-top.js"></script>
     <script type="text/javascript" src="/js/easing.js"></script>
@@ -31,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
 				event.preventDefault();
-				$('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+				$('html,body').animate({scrollTop: $(this.hash).offset().top}, 500);
 			});
 		});
     </script>

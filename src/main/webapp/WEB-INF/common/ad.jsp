@@ -6,7 +6,7 @@
                 <figure>
                     <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                            <a href="/product"><img title=" " alt=" " src="images/1.png"/></a>
+                            <a href="/product"><img title=" " alt=" " src="/images/1.png"/></a>
                             <p>fortune sunflower oil</p>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                 <figure>
                     <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                            <a href="/product"><img title=" " alt=" " src="images/1.png"/></a>
+                            <a href="/product"><img title=" " alt=" " src="/images/1.png"/></a>
                             <p>fortune sunflower oil</p>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <figure>
                     <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                            <a href="/product"><img title=" " alt=" " src="images/1.png"/></a>
+                            <a href="/product"><img title=" " alt=" " src="/images/1.png"/></a>
                             <p>fortune sunflower oil</p>
                         </div>
                     </div>

@@ -7,12 +7,17 @@ import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
+import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.ViewResolver
 import org.springframework.web.servlet.view.UrlBasedViewResolver
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer
 import org.springframework.web.servlet.view.tiles3.TilesView
 
+
+@Configuration
 @SpringBootApplication(exclude = [SecurityAutoConfiguration::class])
+//@EnableNeo4jRepositories(basePackages = ["app.repositories"])
+//@EntityScan(basePackages = ["app.models.entities"])
 @ComponentScan(basePackages = ["app.service" , "app.controllers"])
 open class Application : SpringBootServletInitializer() {
 

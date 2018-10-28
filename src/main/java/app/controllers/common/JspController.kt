@@ -18,4 +18,7 @@ class JspController {
 	@RequestMapping(value = ["/login"])
 	fun loginPage() = "login"
 
+	@RequestMapping(value = ["/wishList"])
+	fun wishList() = "wishList"
+
 }
