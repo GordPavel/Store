@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.RestController
 open class RestController {
 
 	@Autowired
+	private
 	lateinit var service : Service
 
 	@GetMapping("/categories" , produces = [MediaType.APPLICATION_JSON_UTF8_VALUE , MediaType.APPLICATION_XML_VALUE])
 	fun getCategories() = service.getCategories()
+
+	@GetMapping(value = ["/products"] ,
+	            produces = [MediaType.APPLICATION_JSON_UTF8_VALUE , MediaType.APPLICATION_XML_VALUE])
+	fun listProducts() = service.getProducts()
 
 }
