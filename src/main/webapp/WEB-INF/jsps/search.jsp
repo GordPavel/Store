@@ -13,6 +13,8 @@
             {{for subCategories tmpl="#categoriesTreeTemplate" /}}
         </ul>
     </li>
+
+
 </script>
 <%@include file="templates/productsGrid.jsp" %>
 

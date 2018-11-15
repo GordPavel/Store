@@ -200,12 +200,10 @@
 								var re = new RegExp(respTabsId + "[0-9]+");
 								if (currentHash.match(re) != null) {
 									newHash = currentHash.replace(re, newHash);
-								}
-								else {
+								} else {
 									newHash = currentHash + "|" + newHash;
 								}
-							}
-							else {
+							} else {
 								newHash = '#' + newHash;
 							}
 

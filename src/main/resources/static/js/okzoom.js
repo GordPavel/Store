@@ -100,8 +100,7 @@ $(function ($) {
 						$.fn.okzoom.mouseout(b, e);
 					};
 				}(base)));
-			}
-			else {
+			} else {
 				$(base.el).bind('mouseover', (function (b) {
 					return function (e) {
 						$.fn.okzoom.build(b, e);
@@ -161,8 +160,7 @@ $(function ($) {
 	$.fn.okzoom.build = function (base, e) {
 		if (!base.has_data_image) {
 			base.img = base.el;
-		}
-		else if (base.image_from_data != base.$el.attr('data-okimage')) {
+		} else if (base.image_from_data != base.$el.attr('data-okimage')) {
 			// data() returns cached values, whereas attr() returns from the dom.
 			base.image_from_data = base.$el.attr('data-okimage');
 
@@ -263,8 +261,7 @@ $(function ($) {
 			base.timeout = setTimeout(function () {
 				base.loupe.style.opacity = 0;
 			}, base.options.transitionTime);
-		}
-		else {
+		} else {
 			base.loupe.style.opacity = 0;
 		}
 		base.loupe.style.background = "none";

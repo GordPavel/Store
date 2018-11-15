@@ -94,8 +94,7 @@ jQuery.extend(jQuery.easing,
 			if (a < Math.abs(c)) {
 				a = c;
 				var s = p / 4;
-			}
-			else var s = p / (2 * Math.PI) * Math.asin(c / a);
+			} else var s = p / (2 * Math.PI) * Math.asin(c / a);
 			return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
 		},
 		easeOutElastic: function (x, t, b, c, d) {
@@ -108,8 +107,7 @@ jQuery.extend(jQuery.easing,
 			if (a < Math.abs(c)) {
 				a = c;
 				var s = p / 4;
-			}
-			else var s = p / (2 * Math.PI) * Math.asin(c / a);
+			} else var s = p / (2 * Math.PI) * Math.asin(c / a);
 			return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
 		},
 		easeInOutElastic: function (x, t, b, c, d) {
@@ -122,8 +120,7 @@ jQuery.extend(jQuery.easing,
 			if (a < Math.abs(c)) {
 				a = c;
 				var s = p / 4;
-			}
-			else var s = p / (2 * Math.PI) * Math.asin(c / a);
+			} else var s = p / (2 * Math.PI) * Math.asin(c / a);
 			if (t < 1) return -.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
 			return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
 		},

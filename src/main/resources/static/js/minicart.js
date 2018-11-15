@@ -101,8 +101,7 @@
 				if (array.hasOwnProperty(i)) {
 					if (isValueSet) {
 						value = callback(value, array[i], i, array);
-					}
-					else {
+					} else {
 						value = array[i];
 						isValueSet = true;
 					}
@@ -149,8 +148,7 @@
 			let object;
 			if (prototype === null) {
 				object = {'__proto__': null};
-			}
-			else {
+			} else {
 				if (typeof prototype !== 'object') {
 					throw new TypeError(
 						'typeof prototype[' + (typeof prototype) + '] != \'object\''

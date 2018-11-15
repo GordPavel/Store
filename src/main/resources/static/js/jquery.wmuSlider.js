@@ -113,17 +113,17 @@
 						 }
 					 });
 					 $this.append(prev);
-					 
+
 					 var next = $('<a class="wmuSliderNext">' + options.nextText + '</a>');
 					 next.click(function(e) {
 						 e.preventDefault();
 						 clearTimeout(slideshowTimeout);
-						 if (currentIndex + 1 == slidesCount) {    
+						 if (currentIndex + 1 == slidesCount) {
 							 loadSlide(0, true);
 						 } else {
 							 loadSlide(currentIndex + 1);
 						 }
-					 });                
+					 });
 					 $this.append(next);
 				 }
 			  --*/
