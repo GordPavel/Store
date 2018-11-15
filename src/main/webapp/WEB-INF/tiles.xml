@@ -47,4 +47,9 @@
         <put-attribute name="main" value="/WEB-INF/jsps/wishList.jsp"/>
     </definition>
 
+    <definition name="search" extends="base">
+        <put-attribute name="title" value="Поиск"/>
+        <put-attribute name="main" value="/WEB-INF/jsps/search.jsp"/>
+    </definition>
+
 </tiles-definitions>

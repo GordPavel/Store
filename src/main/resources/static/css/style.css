@@ -3255,12 +3255,13 @@ input.checkbox:checked:after {
 }
 
 .form-module .toggle .tooltip {
-    position: absolute;
-    top: 5px;
-    right: -75px;
+    position: relative;
+    width: 100px;
+    bottom: 30px;
+    left: 35px;
+
     display: block;
     background: rgba(0, 0, 0, 0.6);
-    width: auto;
     padding: 5px;
     font-size: 12px;
     line-height: 1;
@@ -3827,7 +3828,6 @@ input.checkbox:checked:after {
 
     .w3ls_logo_products_left h1 a {
         font-size: 1.2em;
-        background: url(../images/img-sp.png) no-repeat 38px -9px;
         height: 83px;
     }
 
@@ -4367,7 +4367,6 @@ input.checkbox:checked:after {
 
     .w3ls_logo_products_left h1 a {
         font-size: 1.2em;
-        background: url(../images/img-sp.png) no-repeat 38px -8px;
         height: 85px;
     }
 

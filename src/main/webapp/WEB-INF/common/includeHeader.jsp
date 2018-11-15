@@ -4,13 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-		setTimeout(hideURLbar, 0);
-	}, false);
+    <script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-	function hideURLbar() {
-		window.scrollTo(0, 1);
-	} </script>
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+    </script>
     <!-- //for-mobile-apps -->
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -20,6 +22,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- js -->
     <script src="/js/jquery-1.11.1.min.js"></script>
     <script src="/js/jsrender.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- //js -->
     <link href='/fonts/google_ubuntu_font' rel='stylesheet' type='text/css'>
     <link href='/fonts/google_sans_font' rel='stylesheet' type='text/css'>
