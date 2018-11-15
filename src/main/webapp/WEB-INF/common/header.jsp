@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<script src="/js/onPage/header.js"></script>
 <div class="header">
     <div class="container">
         <div class="w3ls_logo_products_left">
@@ -9,7 +10,7 @@
                 <form action="/search" method="get">
                     <%--suppress HtmlFormInputWithoutLabel --%>
                     <input type="text" name="query" value="Поиск" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Поиск   ';}" required="">
+                           onblur="if (this.value === '') {this.value = 'Поиск   ';}" required="">
                     <input type="submit" value=" ">
                 </form>
             </div>
@@ -25,8 +26,11 @@
                     <div class="mega-dropdown-menu">
                         <div class="w3ls_vegetables">
                             <ul class="dropdown-menu drp-mnu">
-                                <li><a href="/login">Войти</a></li>
-                                <li><a href="/login">Загеристрироваться</a></li>
+                                <li class="anonymous"><a href="/login?login">Войти</a></li>
+                                <li class="anonymous"><a href="/login?registration">Загеристрироваться</a></li>
+                                <li class="user"><a href="/wishList">Список желаний</a></li>
+                                <li class="user"><a href="/logout">Выйти</a></li>
+                                <li class="admin"><a href="/admin">Панель администратора</a></li>
                             </ul>
                         </div>
                     </div>

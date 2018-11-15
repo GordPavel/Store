@@ -1,5 +1,4 @@
 <%@page pageEncoding="UTF-8" %>
-<script src="/js/onPage/common.js"></script>
 <script src="/js/onPage/category.js"></script>
 <%@include file="templates/productsGrid.jsp" %>
 <div class="w3l_banner_nav_right" style="float : initial; width: 100%">

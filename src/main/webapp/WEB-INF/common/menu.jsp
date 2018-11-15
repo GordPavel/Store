@@ -1,5 +1,4 @@
 <%@ page pageEncoding="UTF-8" %>
-
 <script>
 	$(document).ready(function () {
 		$.ajax("/rest/categories", {

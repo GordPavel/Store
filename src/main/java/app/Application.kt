@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView
 @SpringBootApplication(exclude = [SecurityAutoConfiguration::class])
 //@EnableNeo4jRepositories(basePackages = ["app.repositories"])
 //@EntityScan(basePackages = ["app.models.entities"])
-@ComponentScan(basePackages = ["app.service" , "app.controllers"])
+@ComponentScan(basePackages = ["app.service" , "app.controllers" , "app.config"])
 open class Application : SpringBootServletInitializer() , WebMvcConfigurer {
 
 	override fun addViewControllers(registry : ViewControllerRegistry) {
@@ -54,7 +54,6 @@ open class Application : SpringBootServletInitializer() , WebMvcConfigurer {
 		@Throws(Exception::class)
 		@JvmStatic
 		fun main(args : Array<String>) {
-			println("starting application...")
 			SpringApplication.run(Application::class.java , *args)
 		}
 	}

@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.css">
 <link rel="stylesheet" href="/slider/css/normalize.css">
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.skinNice.css">
-<script src="/js/onPage/common.js"></script>
 <script src="/js/onPage/search.js"></script>
 <script id="categoriesTreeTemplate" type="application/x-jsrender">
     <li>

@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<script src="/js/onPage/login.js"></script>
 <div class="w3l_banner_nav_right" style="float: initial; width: 100%">
     <!-- login -->
     <div class="w3_login">
@@ -11,17 +12,17 @@
                          class="tooltip">Ещё нет аккаунта?
                     </div>
                 </div>
-                <div class="form">
+                <div id="loginForm" class="form">
                     <h2>Войти в аккаунт</h2>
-                    <form action="#" method="post">
-                        <input type="text" name="Username" placeholder="E-mail">
-                        <input type="password" name="Password" placeholder="Пароль">
+                    <form action="/login" method="post">
+                        <input type="text" name="username" placeholder="E-mail">
+                        <input type="password" name="password" placeholder="Пароль">
                         <input type="submit" value="Войти">
                     </form>
                 </div>
-                <div class="form">
+                <div id="registrationForm" class="form" style="display: none">
                     <h2>Зарегистрироваться</h2>
-                    <form action="#" method="post">
+                    <form action="/registration" method="post">
                         <input type="text" name="Username" placeholder="E-mail" required>
                         <input type="password" name="Password" placeholder="Пароль">
                         <input type="password" name="PasswordAccept" placeholder="Подтверждение пароля">
@@ -35,34 +36,6 @@
                 </div>
             </div>
         </div>
-        <script>
-	        $(document).ready(function () {
-		        const $tooltip = $('#tooltip'), $toggle = $('.toggle');
-		        $toggle.hover(function () {
-			        $tooltip.fadeIn('slow');
-		        }, function () {
-			        $tooltip.fadeOut('slow');
-		        });
-		        $toggle.click(function () {
-			        const hrefRegex = /(?<base>\/registration\/\w+\?)(?<login>login|registration)/;
-			        $('.loginHref').each((index, href) => {
-				        href = $(href);
-				        const matcher = hrefRegex.exec(href.attr('href'));
-				        href.attr('href', matcher.groups.base.concat(matcher.groups.login === 'login' ? 'registration' : 'login'));
-			        });
-
-			        // Switches the Icon
-			        $(this).children('i').toggleClass('fa-pencil');
-			        // Switches the forms
-			        $('.form').animate({
-				        height: "toggle",
-				        'padding-top': 'toggle',
-				        'padding-bottom': 'toggle',
-				        opacity: "toggle"
-			        }, "slow");
-		        });
-			});
-        </script>
     </div>
     <!-- //login -->
 </div>
