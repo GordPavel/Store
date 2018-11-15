@@ -1,4 +1,4 @@
-package app.controllers.common
+package app.controllers
 
 import app.service.Service
 import org.springframework.beans.factory.annotation.Autowired

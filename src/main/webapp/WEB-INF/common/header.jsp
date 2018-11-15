@@ -6,8 +6,9 @@
         </div>
         <div class="w3ls_logo_products_left1">
             <div class="w3l_search">
-                <form action="/search" method="post">
-                    <input type="text" name="Product" value="Поиск" onfocus="this.value = '';"
+                <form action="/search" method="get">
+                    <%--suppress HtmlFormInputWithoutLabel --%>
+                    <input type="text" name="query" value="Поиск" onfocus="this.value = '';"
                            onblur="if (this.value == '') {this.value = 'Поиск   ';}" required="">
                     <input type="submit" value=" ">
                 </form>

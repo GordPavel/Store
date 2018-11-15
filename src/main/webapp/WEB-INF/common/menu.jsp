@@ -5,11 +5,16 @@
 		$.ajax("/rest/categories", {
 			success: function (response) {
 				$("#menuItemsContainer").html($("#categoryTemplate").render(response));
-				$('li.dropdown').hover(function () {
-					$(this).find('.dropdown-menu').stop(true, true).css('display', 'block');
-				}, function () {
-					$(this).find('.dropdown-menu').stop(true, true).css('display', 'none');
-				});
+				$(".dropdown").hover(
+					function () {
+						$('.dropdown-menu', this).stop(true, true).slideDown("fast");
+						$(this).toggleClass('open');
+					},
+					function () {
+						$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+						$(this).toggleClass('open');
+					}
+				);
 			}
 		});
 	})

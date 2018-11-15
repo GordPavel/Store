@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.css">
 <link rel="stylesheet" href="/slider/css/normalize.css">
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.skinNice.css">
+<script src="/js/onPage/common.js"></script>
 <script src="/js/onPage/search.js"></script>
 <script id="categoriesTreeTemplate" type="application/x-jsrender">
     <li>
@@ -13,10 +14,9 @@
             {{for subCategories tmpl="#categoriesTreeTemplate" /}}
         </ul>
     </li>
-
-
 </script>
 <%@include file="templates/productsGrid.jsp" %>
+
 <div class="w3l_banner_nav_right" style="float : initial; width: 100%">
     <div class="row">
         <div class="col-md-8 w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
