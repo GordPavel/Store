@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import org.springframework.web.servlet.ViewResolver
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView
 @EntityScan(basePackages = ["app.models"])
 @EnableNeo4jRepositories(basePackages = ["app.repositories"])
 @EnableTransactionManagement
+@EnableGlobalMethodSecurity(securedEnabled = true)
 @Configuration
 open class Application : SpringBootServletInitializer() , WebMvcConfigurer {
 

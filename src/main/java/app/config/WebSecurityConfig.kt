@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
+import org.springframework.security.web.AuthenticationEntryPoint
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
+import javax.servlet.http.HttpServletResponse
+
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +26,12 @@ open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 				.antMatchers("/wishList").authenticated()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().permitAll()
+		http
+				.exceptionHandling()
+				.defaultAuthenticationEntryPointFor(AuthenticationEntryPoint { _ , response , exception ->
+					// todo pavelgordeev Разные статусы в зависимости от ошибки
+					response.sendError(HttpServletResponse.SC_FORBIDDEN , exception.message)
+				} , AntPathRequestMatcher("/repository/**"))
 		http
 				.formLogin()
 				.loginPage("/login?login")

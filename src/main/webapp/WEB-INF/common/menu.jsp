@@ -1,23 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<script>
-	$(document).ready(function () {
-		$.ajax("/rest/categories", {
-			success: function (response) {
-				$("#menuItemsContainer").html($("#categoryTemplate").render(response));
-				$(".dropdown").hover(
-					function () {
-						$('.dropdown-menu', this).stop(true, true).slideDown("fast");
-						$(this).toggleClass('open');
-					},
-					function () {
-						$('.dropdown-menu', this).stop(true, true).slideUp("fast");
-						$(this).toggleClass('open');
-					}
-				);
-			}
-		});
-	})
-</script>
+<script src="/js/onPage/menu.js"></script>
 <script id="categoryTemplate" type="text/x-jsrender">
     {{if subCategories.length === 0 }}
         <li><a href="/category?name={{>name}}">{{>name}}</a></li>
@@ -36,8 +18,6 @@
             </div>
         </li>
     {{/if}}
-
-
 </script>
 <div class="w3l_banner_nav_left" style="width: 100%; float: initial; padding-top: 10px; padding-bottom: 10px">
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">

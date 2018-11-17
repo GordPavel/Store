@@ -1066,7 +1066,7 @@ button.submit.check_out {
 }
 
 /*-- //top-brands --*/
-/*-- top-products --*/
+/*-- top-favorite --*/
 .w3l_fresh_vegetables_grids {
     margin: 3em 0 0;
     padding: 1em 0em 1em 1em;
@@ -1187,7 +1187,7 @@ button.submit.check_out {
     color: #FA1818;
 }
 
-/*-- //top-products --*/
+/*-- //top-favorite --*/
 /*-- newsletter --*/
 .newsletter {
     padding: 3em 0;
@@ -1415,7 +1415,7 @@ button.submit.check_out {
 }
 
 /*-- //to-top --*/
-/*-- products-breadcrumb --*/
+/*-- favorite-breadcrumb --*/
 .products-breadcrumb {
     padding: 1em 0;
     background: #84C639;
@@ -1445,8 +1445,8 @@ button.submit.check_out {
     color: #FA1818;
 }
 
-/*-- //products-breadcrumb --*/
-/*-- products --*/
+/*-- //favorite-breadcrumb --*/
+/*-- favorite --*/
 .w3l_banner_nav_right_banner3, .w3l_banner_nav_right_banner4, .w3l_banner_nav_right_banner5, .w3l_banner_nav_right_banner6, .w3l_banner_nav_right_banner7, .w3l_banner_nav_right_banner8, .w3l_banner_nav_right_banner9, .w3l_banner_nav_right_banner10 {
     min-height: 300px;
     padding-top: 7em;
@@ -1782,7 +1782,7 @@ button.submit.check_out {
     line-height: 1.8em;
 }
 
-/*-- //products --*/
+/*-- //favorite --*/
 /*-- vegetables --*/
 .w3l_fruit {
     margin-bottom: 2em !important;
