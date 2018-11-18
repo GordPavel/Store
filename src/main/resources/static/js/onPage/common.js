@@ -4,6 +4,7 @@ $.ajax("/rest/authorities", {
 	success: function (response) {
 		// noinspection JSUnresolvedVariable
 		roles = response.map(a => a.authority);
+		$(document).trigger("rolesLoaded");
 	}
 });
 Array.prototype.toMatrix = function (width) {
