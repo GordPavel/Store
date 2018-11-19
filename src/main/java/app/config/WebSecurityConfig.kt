@@ -1,22 +1,33 @@
 package app.config
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.provisioning.InMemoryUserDetailsManager
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder
 import org.springframework.security.web.AuthenticationEntryPoint
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 import javax.servlet.http.HttpServletResponse
 
-
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
+
+	@Bean(name = ["passwordEncoder"])
+	open fun passwordEncoder() = SCryptPasswordEncoder()
+
+	@Autowired
+	@Qualifier("userDetails")
+	private lateinit var userDetailsService : UserDetailsService
+
+	override fun userDetailsServiceBean() : UserDetailsService = userDetailsService
+
 	override fun configure(http : HttpSecurity) {
 		http
 				.csrf()
@@ -47,26 +58,5 @@ open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 				.logoutSuccessUrl("/")
 				.invalidateHttpSession(true)
 				.clearAuthentication(true)
-	}
-
-	@Bean
-	open fun passwordEncoder() = BCryptPasswordEncoder()
-
-	@Bean
-	override fun userDetailsService() : UserDetailsService {
-		val encoder = passwordEncoder()
-		val admin = User.builder()
-				.username("admin")
-				.password("admin")
-				.passwordEncoder(encoder::encode)
-				.roles("ADMIN" , "USER")
-				.build()
-		val user = User.builder()
-				.username("user")
-				.password("user")
-				.passwordEncoder(encoder::encode)
-				.roles("USER")
-				.build()
-		return InMemoryUserDetailsManager(admin , user)
 	}
 }

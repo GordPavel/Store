@@ -68,6 +68,9 @@ interface ProductRepository : Neo4jRepository<ProductEntity , Long> {
 
 @RepositoryRestResource(path = "users" , collectionResourceRel = "users" , itemResourceRel = "user")
 interface UserRepository : Neo4jRepository<UserEntity , Long> {
+
+	fun findByUsername(userName : String) : UserEntity?
+
 	@Secured("ROLE_ADMIN")
 	override fun findAll() : MutableIterable<UserEntity>
 
