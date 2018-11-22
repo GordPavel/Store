@@ -1,11 +1,7 @@
 package app.models
 
-import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.fasterxml.jackson.annotation.*
 import org.neo4j.ogm.annotation.*
-import org.neo4j.ogm.id.InternalIdStrategy
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
@@ -13,15 +9,17 @@ import org.springframework.security.core.userdetails.UserDetails
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class UserEntity(
 		@Index(unique = true)
+		@JsonProperty("username")
+		@Property
 		var userUsername : String ,
-
+		@JsonProperty("password")
+		@Property
 		var userPassword : String ,
 
 		@Relationship(type = "favorite")
 		var favorite : List<ProductEntity> = emptyList() ,
 
-		@JsonIgnore
-		var roles : List<String> = listOf("USER")
+		@Property var roles : List<String> = listOf("USER")
                      ) : UserDetails {
 	@Id
 	@GeneratedValue
@@ -53,9 +51,6 @@ data class UserEntity(
 	override fun isAccountNonLocked() = true
 }
 
-//@JsonIdentityInfo(
-//		generator = ObjectIdGenerators.PropertyGenerator::class ,
-//		property = "id")
 @NodeEntity(label = "category")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class CategoryEntity(
@@ -84,17 +79,16 @@ data class CategoryEntity(
 	var properties : Map<String , String> = emptyMap()
 }
 
-//@JsonIdentityInfo(
-//		generator = ObjectIdGenerators.PropertyGenerator::class ,
-//		property = "id")
 @NodeEntity(label = "product")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class ProductEntity(
 		@Index(unique = true)
 		var name : String ,
 
+		@Property
 		var price : Double ,
 
+		@Property
 		var oldPrice : Double? = null ,
 
 		@JsonManagedReference
@@ -105,6 +99,7 @@ data class ProductEntity(
 	@GeneratedValue
 	var id : Long? = null
 
+	@Property
 	var visitorsCount : Int = 0
 
 	@JsonIgnore
@@ -115,12 +110,16 @@ data class ProductEntity(
 	var properties : Map<String , String> = emptyMap()
 }
 
-@NodeEntity(label = "savedPrincipal")
+@NodeEntity(label = "password")
 data class VKEntity(
-		val username : String ,
-		val password : String
+		@Property
+		@JsonProperty("username")
+		var username : String ,
+		@Property
+		@JsonProperty("password")
+		var password : String
                    ) {
 	@Id
-	@GeneratedValue(strategy = InternalIdStrategy::class)
+	@GeneratedValue
 	var id : Long? = null
 }

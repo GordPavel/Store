@@ -30,6 +30,8 @@ open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
 	override fun configure(http : HttpSecurity) {
 		http
+				.httpBasic()
+		http
 				.csrf()
 				.disable()
 		http
@@ -37,6 +39,10 @@ open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 				.antMatchers("/wishList").authenticated()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().permitAll()
+		http
+				.headers()
+				.frameOptions()
+				.disable()
 		http
 				.exceptionHandling()
 				.defaultAuthenticationEntryPointFor(AuthenticationEntryPoint { _ , response , exception ->

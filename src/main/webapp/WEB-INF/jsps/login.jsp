@@ -30,7 +30,7 @@
                     </form>
                 </div>
                 <div class="cta">
-                    <a class="loginHref" href="/registration/vk?login"><img src="/images/vkontakte32.png"></a>
+                    <a class="loginHref" href="/pages/vkLogin.html"><img src="/images/vkontakte32.png"></a>
                     <a class="loginHref" href="/registration/odnoklassniki?login"><img
                             src="/images/odnoklassniki32.png"></a>
                 </div>
