@@ -2,8 +2,12 @@ package app.models
 
 import com.fasterxml.jackson.annotation.*
 import org.neo4j.ogm.annotation.*
+import org.neo4j.ogm.annotation.typeconversion.Convert
+import org.neo4j.ogm.typeconversion.AttributeConverter
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import javax.validation.constraints.Email
+
 
 @NodeEntity(label = "user")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -11,6 +15,7 @@ data class UserEntity(
 		@Index(unique = true)
 		@JsonProperty("username")
 		@Property
+		@Email
 		var userUsername : String ,
 		@JsonProperty("password")
 		@Property
@@ -117,9 +122,32 @@ data class VKEntity(
 		var username : String ,
 		@Property
 		@JsonProperty("password")
-		var password : String
+		var password : String ,
+		@Property
+		@Convert(SocialNetworkConverter::class)
+		var network : SocialNetwork
                    ) {
 	@Id
 	@GeneratedValue
 	var id : Long? = null
+}
+
+enum class SocialNetwork(val russian : String) {
+	VK("Вконтакте") ,
+	ODNOKLASSNIKI("Одноклассники");
+
+	companion object {
+		private val map = SocialNetwork.values().map { it.russian to it }.toMap()
+		@JsonCreator
+		fun getValue(name : String) = map[name] ?: throw IllegalArgumentException("No SocialNetwork with name $name")
+	}
+
+	@JsonValue
+	fun toJson() = this.russian
+}
+
+open class SocialNetworkConverter : AttributeConverter<SocialNetwork , String> {
+	override fun toGraphProperty(value : SocialNetwork) = value.toJson()
+
+	override fun toEntityAttribute(value : String) = SocialNetwork.getValue(value)
 }

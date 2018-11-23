@@ -19,6 +19,7 @@ open class WebConfig : WebMvcConfigurer {
 		registry.addViewController("/login").setViewName("login")
 		registry.addViewController("/wishList").setViewName("wishList")
 		registry.addViewController("/search").setViewName("search")
+		registry.addViewController("/registration").setViewName("registration")
 	}
 
 	@Bean(name = ["viewResolver"])

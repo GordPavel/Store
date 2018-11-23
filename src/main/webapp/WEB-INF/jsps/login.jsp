@@ -23,15 +23,18 @@
                 <div id="registrationForm" class="form" style="display: none">
                     <h2>Зарегистрироваться</h2>
                     <form action="/registration" method="post">
-                        <input type="text" name="Username" placeholder="E-mail" required>
-                        <input type="password" name="Password" placeholder="Пароль">
-                        <input type="password" name="PasswordAccept" placeholder="Подтверждение пароля">
+                        <div id="enterEmail" class="alert alert-danger" role="alert" style="display: none">
+                            Введите email для рецистрации
+                        </div>
+                        <input id="registrationEmail" type="text" name="Username" placeholder="E-mail" required>
+                        <input type="password" name="Password" placeholder="Пароль" required>
+                        <input type="password" name="PasswordAccept" placeholder="Подтверждение пароля" required>
                         <input type="submit" value="Зарегистрироваться">
                     </form>
                 </div>
                 <div class="cta">
-                    <a class="loginHref" href="/pages/vkLogin.html"><img src="/images/vkontakte32.png"></a>
-                    <a class="loginHref" href="/registration/odnoklassniki?login"><img
+                    <a class="loginHref" href="/pages/vk/vkLogin.html?login"><img src="/images/vkontakte32.png"></a>
+                    <a class="loginHref" href="/pages/odnoklassniki/odnoklassnikiLogin.html?login"><img
                             src="/images/odnoklassniki32.png"></a>
                 </div>
             </div>
