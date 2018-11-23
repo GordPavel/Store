@@ -2,7 +2,6 @@ package app.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.web.servlet.ViewResolver
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.view.UrlBasedViewResolver
@@ -23,16 +22,12 @@ open class WebConfig : WebMvcConfigurer {
 	}
 
 	@Bean(name = ["viewResolver"])
-	open fun getViewResolver() : ViewResolver {
-		val viewResolver = UrlBasedViewResolver()
-		viewResolver.setViewClass(TilesView::class.java)
-		return viewResolver
+	open fun getViewResolver() = UrlBasedViewResolver().apply {
+		setViewClass(TilesView::class.java)
 	}
 
 	@Bean(name = ["tilesConfigurer"])
-	open fun getTilesConfigurer() : TilesConfigurer {
-		val tilesConfigurer = TilesConfigurer()
-		tilesConfigurer.setDefinitions("/WEB-INF/tiles.xml")
-		return tilesConfigurer
+	open fun getTilesConfigurer() = TilesConfigurer().apply {
+		setDefinitions("/WEB-INF/tiles.xml")
 	}
 }

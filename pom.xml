@@ -6,7 +6,7 @@
     <groupId>ru.ssau</groupId>
     <artifactId>store</artifactId>
     <version>0.0.1</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>store</name>
     <description>SSAU project</description>
@@ -31,6 +31,8 @@
         <kotlin.version>1.3.10</kotlin.version>
         <neo4j-embedded-driver.version>3.1.2</neo4j-embedded-driver.version>
         <neo4j.version>3.4.10</neo4j.version>
+
+        <war.location>${project.basedir}/compiled</war.location>
     </properties>
 
     <dependencies>
@@ -167,7 +169,39 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>static/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-static</id>
+                        <phase>
+                            package
+                        </phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${war.location}/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/src/main/resources/static</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
