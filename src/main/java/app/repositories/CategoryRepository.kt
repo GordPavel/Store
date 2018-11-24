@@ -1,12 +1,17 @@
 package app.repositories
 
 import app.models.CategoryEntity
+import org.springframework.data.neo4j.annotation.Query
 import org.springframework.data.neo4j.repository.Neo4jRepository
-import org.springframework.data.rest.core.annotation.RepositoryRestResource
+import org.springframework.data.repository.query.Param
 import org.springframework.security.access.annotation.Secured
+import org.springframework.stereotype.Repository
 
-@RepositoryRestResource(path = "categories" , collectionResourceRel = "categories" , itemResourceRel = "category")
+@Repository
 interface CategoryRepository : Neo4jRepository<CategoryEntity , Long> {
+
+	@Query("MATCH (parent:category)-[:subCategory*1..1]->(sub:category) WHERE id(parent)={0} RETURN sub;")
+	fun getSubCategoriesByParentId(@Param("id") id : Long) : Iterable<CategoryEntity>
 
 	@Secured("ROLE_ADMIN")
 	override fun <S : CategoryEntity?> save(s : S , depth : Int) : S

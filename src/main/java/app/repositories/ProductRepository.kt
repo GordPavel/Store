@@ -2,10 +2,10 @@ package app.repositories
 
 import app.models.ProductEntity
 import org.springframework.data.neo4j.repository.Neo4jRepository
-import org.springframework.data.rest.core.annotation.RepositoryRestResource
 import org.springframework.security.access.annotation.Secured
+import org.springframework.stereotype.Repository
 
-@RepositoryRestResource(path = "products" , collectionResourceRel = "products" , itemResourceRel = "product")
+@Repository
 interface ProductRepository : Neo4jRepository<ProductEntity , Long> {
 
 	@Secured("ROLE_ADMIN")

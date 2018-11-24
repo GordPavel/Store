@@ -185,9 +185,7 @@
                 <executions>
                     <execution>
                         <id>copy-static</id>
-                        <phase>
-                            package
-                        </phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
