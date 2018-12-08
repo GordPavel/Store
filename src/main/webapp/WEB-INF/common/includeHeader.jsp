@@ -14,7 +14,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
     </script>
     <!-- //for-mobile-apps -->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- font-awesome icons -->
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" media="all"/>
@@ -24,8 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="/js/jsrender.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <!-- //js -->
-    <link href='/fonts/google_ubuntu_font' rel='stylesheet' type='text/css'>
-    <link href='/fonts/google_sans_font' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu" rel="stylesheet">
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="/js/move-top.js"></script>
     <script type="text/javascript" src="/js/easing.js"></script>
