@@ -11,12 +11,11 @@
 <tiles:insertAttribute name="breadcrumb"/>
 <div class="container mainPart">
     <div class="row" style="margin: 0">
-        <div class="col-md-2 col-sm-2" style="min-width: 150px; padding : 0">
-            <tiles:insertAttribute name="menu"/>
-            <tiles:insertAttribute name="ad"/>
-        </div>
-        <div class="col-md-10 col-sm-9" style="padding: 0">
+        <div class="col-md-11 col-sm-9" style="padding: 0">
             <tiles:insertAttribute name="main"/>
+        </div>
+        <div class="col-md-1 col-sm-2" style="min-width: 150px; padding : 0">
+            <tiles:insertAttribute name="ad"/>
         </div>
         <div class="clear" style="clear: both"></div>
     </div>

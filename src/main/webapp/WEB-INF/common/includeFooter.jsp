@@ -1,18 +1,4 @@
 <!-- Bootstrap Core JavaScript -->
-<script>
-	$(document).ready(function () {
-		$(".dropdown").hover(
-			function () {
-				$('.dropdown-menu', this).stop(true, true).slideDown("fast");
-				$(this).toggleClass('open');
-			},
-			function () {
-				$('.dropdown-menu', this).stop(true, true).slideUp("fast");
-				$(this).toggleClass('open');
-			}
-		);
-	});
-</script>
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
 	$(document).ready(function () {
@@ -27,6 +13,23 @@
 
 		$().UItoTop({easingType: 'easeOutQuart'});
 
+	});
+</script>
+<script type="application/x-javascript">
+	addEventListener("load", function () {
+		setTimeout(hideURLbar, 0);
+	}, false);
+
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
+</script>
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		$(".scroll").click(function (event) {
+			event.preventDefault();
+			$('html,body').animate({scrollTop: $(this.hash).offset().top}, 500);
+		});
 	});
 </script>
 <!-- //here ends scrolling icon -->
