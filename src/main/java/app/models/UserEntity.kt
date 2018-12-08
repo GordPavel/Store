@@ -8,7 +8,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import javax.validation.constraints.Email
 
-
 @NodeEntity(label = "user")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class UserEntity(

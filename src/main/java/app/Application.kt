@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories
 import org.springframework.transaction.annotation.EnableTransactionManagement
+import org.tartarus.snowball.ext.RussianStemmer
 
 @SpringBootApplication(exclude = [SecurityAutoConfiguration::class])
 @ComponentScan(basePackages = ["app.config" , "app.controllers" , "app.service"])
@@ -18,6 +20,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @EnableTransactionManagement
 @Configuration
 open class Application : SpringBootServletInitializer() {
+
+	@Bean(name = ["apacheStemmer"])
+	open fun russianStemmer() : RussianStemmer = RussianStemmer()
 
 	override fun configure(application : SpringApplicationBuilder) : SpringApplicationBuilder = application.sources(
 			Application::class.java)

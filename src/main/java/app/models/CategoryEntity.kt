@@ -39,7 +39,7 @@ data class CategoryEntity(
 		return id?.equals((other as? CategoryEntity ?: return false).id) ?: false
 	}
 
-	override fun toString() = "id: $id,name: $name"
+	override fun toString() = "id: ${id ?: "unregistered"},name: $name"
 }
 
 data class CategoryDTO(val name : String , val subCategoriesIds : List<Long> = emptyList() ,
