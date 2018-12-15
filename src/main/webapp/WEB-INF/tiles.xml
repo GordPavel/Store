@@ -4,19 +4,24 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="base"
-                template="/WEB-INF/tiles_templates/default_template.jsp">
+    <definition name="withoutAd"
+                template="/WEB-INF/tiles_templates/without_ad_template.jsp">
         <put-attribute name="includeHeader" value="/WEB-INF/common/includeHeader.jsp"/>
         <put-attribute name="bodyHeader" value="/WEB-INF/common/header.jsp"/>
         <put-attribute name="breadcrumb" value="/WEB-INF/common/breadcrumb.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/common/menu.jsp"/>
         <put-attribute name="bodyFooter" value="/WEB-INF/common/footer.jsp"/>
         <put-attribute name="includeFooter" value="/WEB-INF/common/includeFooter.jsp"/>
-
-        <put-attribute name="ad" value=""/>
     </definition>
 
-    <definition name="withAd" extends="base">
+    <definition name="withAd"
+                template="/WEB-INF/tiles_templates/with_ad_template.jsp">
+        <put-attribute name="includeHeader" value="/WEB-INF/common/includeHeader.jsp"/>
+        <put-attribute name="bodyHeader" value="/WEB-INF/common/header.jsp"/>
+        <put-attribute name="breadcrumb" value="/WEB-INF/common/breadcrumb.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/common/menu.jsp"/>
+        <put-attribute name="bodyFooter" value="/WEB-INF/common/footer.jsp"/>
+        <put-attribute name="includeFooter" value="/WEB-INF/common/includeFooter.jsp"/>
         <put-attribute name="ad" value="/WEB-INF/common/ad.jsp"/>
     </definition>
 
@@ -37,22 +42,22 @@
         <put-attribute name="main" value="/WEB-INF/jsps/product.jsp"/>
     </definition>
 
-    <definition name="login" extends="base">
+    <definition name="login" extends="withoutAd">
         <put-attribute name="title" value="Войти в профиль"/>
         <put-attribute name="main" value="/WEB-INF/jsps/login.jsp"/>
     </definition>
 
-    <definition name="wishList" extends="base">
+    <definition name="wishList" extends="withoutAd">
         <put-attribute name="title" value="Список желаний"/>
         <put-attribute name="main" value="/WEB-INF/jsps/wishList.jsp"/>
     </definition>
 
-    <definition name="search" extends="base">
+    <definition name="search" extends="withoutAd">
         <put-attribute name="title" value="Поиск"/>
         <put-attribute name="main" value="/WEB-INF/jsps/search.jsp"/>
     </definition>
 
-    <definition name="registration" extends="base">
+    <definition name="registration" extends="withoutAd">
         <put-attribute name="title" value="Регистрация"/>
         <put-attribute name="main" value="/WEB-INF/jsps/registration.jsp"/>
     </definition>

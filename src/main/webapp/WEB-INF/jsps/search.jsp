@@ -1,21 +1,12 @@
 <%@page pageEncoding="UTF-8" %>
-<script src="/tree/js/checktree.js"></script>
-<link rel="stylesheet" href="/tree/css/styles.css">
+<%-- todo gordeev.p заменить на https://jonmiles.github.io/bootstrap-treeview/ --%>
 <script src="/slider/js/ion.rangeSlider.min.js"></script>
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.css">
-<link rel="stylesheet" href="/slider/css/normalize.css">
+<%-- todo gordeev.p Разобраться, почему крашит --%>
+<%--<link rel="stylesheet" href="/slider/css/normalize.css">--%>
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.skinNice.css">
 <script src="/js/onPage/search.js"></script>
-<script id="categoriesTreeTemplate" type="application/x-jsrender">
-    <li>
-        <input id="{{>name}}" type="checkbox"/><label for="{{>name}}">{{>name}}</label>
-        <ul>
-            {{for subCategories tmpl="#categoriesTreeTemplate" /}}
-        </ul>
-    </li>
-</script>
 <%@include file="templates/productsGrid.jsp" %>
-
 <div class="w3l_banner_nav_right" style="float : initial; width: 100%">
     <div class="row">
         <div class="col-md-8 w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
@@ -35,9 +26,9 @@
                 <div id="categoryPicker">
                     <label>Категории</label>
                     <br>
-                    <ul id="tree" class="checktree">
-                        <%-- место для дерева категорий --%>
-                    </ul>
+                    <%--<ul id="tree" class="checktree">--%>
+                    <%--&lt;%&ndash; место для дерева категорий &ndash;%&gt;--%>
+                    <%--</ul>--%>
                 </div>
             </div>
         </div>

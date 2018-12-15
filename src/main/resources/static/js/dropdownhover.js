@@ -294,15 +294,20 @@
 
 	// APPLY TO STANDARD DROPDOWNHOVER ELEMENTS
 	// ===================================
-	$(document).ready(function () {
+
+	window.setupDropDownHover = function () {
 		$('[data-hover="dropdown"]').each(function () {
-			var $target = $(this)
+			var $target = $(this);
 			if ('ontouchstart' in document.documentElement) {
 				Plugin.call($target, $.extend({}, $target.data(), {onClick: true}))
 			} else {
 				Plugin.call($target, $target.data())
 			}
-		})
-	})
+		});
+		$('a.dropdown-toggle').click(function (e) {
+			e.stopPropagation();
+		});
+	};
+	$(document).ready(window.setupDropDownHover)
 
 }(jQuery);

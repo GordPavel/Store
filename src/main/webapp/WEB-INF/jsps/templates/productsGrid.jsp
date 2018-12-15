@@ -29,18 +29,10 @@
 	</div>
         </div>
     </div>
-
-
-
-
 </script>
 <script id="productsRow" type="text/x-jsrender">
 <div class="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
     {{for #data tmpl="#oneProduct"/}}
     <div class="clearfix"></div>
 </div>
-
-
-
-
 </script>
