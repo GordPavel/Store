@@ -2,6 +2,7 @@ package app.service
 
 import app.models.CategoryDTO
 import app.models.CategoryEntity
+import app.models.ProductDTO
 import app.repositories.CategoryRepository
 import app.repositories.ProductRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -42,6 +43,10 @@ open class Service {
 		val root = categoryRepository.findById(0 , 0).orElseThrow { IllegalStateException("No root category!!") }
 		return getTree(root)
 	}
+
+	@Transactional(readOnly = true)
+	open fun getTree() : Iterable<CategoryEntity> =
+			categoryRepository.getRootCategories().onEach { it.subCategories = getTree(it).toList() }
 
 	@Transactional(readOnly = true)
 	open fun getTree(root : CategoryEntity) : Iterable<CategoryEntity> {
