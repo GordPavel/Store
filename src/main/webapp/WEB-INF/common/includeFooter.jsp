@@ -1,5 +1,3 @@
-<script src="/js/dropdownhover.min.js"></script>
-
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
 	$(document).ready(function () {

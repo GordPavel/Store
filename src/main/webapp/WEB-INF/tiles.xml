@@ -25,6 +25,11 @@
         <put-attribute name="ad" value="/WEB-INF/common/ad.jsp"/>
     </definition>
 
+    <definition name="admin" template="/WEB-INF/tiles_templates/admin_template.jsp">
+        <put-attribute name="includeHeader" value="/WEB-INF/common/includeHeader.jsp"/>
+        <put-attribute name="includeFooter" value="/WEB-INF/common/includeFooter.jsp"/>
+    </definition>
+
     <!-- Pages -->
 
     <definition name="index" extends="withAd">

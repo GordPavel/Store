@@ -1,10 +1,10 @@
 <%@page pageEncoding="UTF-8" %>
-<%-- todo gordeev.p заменить на https://jonmiles.github.io/bootstrap-treeview/ --%>
-<script src="/slider/js/ion.rangeSlider.min.js"></script>
-<link rel="stylesheet" href="/slider/css/ion.rangeSlider.css">
+<script src="/tree-view/js/bootstrap-treeview.min.js"></script>
+<link rel="stylesheet" href="/tree-view/css/bootstrap-treeview.css">
 <%-- todo gordeev.p Разобраться, почему крашит --%>
 <%--<link rel="stylesheet" href="/slider/css/normalize.css">--%>
-<link rel="stylesheet" href="/slider/css/ion.rangeSlider.skinNice.css">
+<script src="/slider/js/ion.rangeSlider.min.js"></script>
+<link rel="stylesheet" href="/slider/css/ion.rangeSlider.min.css">
 <script src="/js/onPage/search.js"></script>
 <%@include file="templates/productsGrid.jsp" %>
 <div class="w3l_banner_nav_right" style="float : initial; width: 100%">
@@ -15,20 +15,17 @@
                 <%-- место для продуктов --%>
             </div>
         </div>
-        <div class="col-md-4" style="background: lightgray">
-            <div style="width: 90%">
+        <div class="col-md-4" style="background: lightgray; height : 100%">
+            <div>
+                <button type="button" class="btn btn-outline-primary btn-lg">Поиск</button>
                 <div id="priceSlider">
-                    <label>
-                        <span>Выбор цены</span>
-                        <input type="text" id="slider" name="example_name" value=""/>
-                    </label>
+                    <label for="slider"><span>Выбор цены</span></label>
+                    <input type="text" id="slider" name="example_name" value=""/>
                 </div>
                 <div id="categoryPicker">
                     <label>Категории</label>
                     <br>
-                    <%--<ul id="tree" class="checktree">--%>
-                    <%--&lt;%&ndash; место для дерева категорий &ndash;%&gt;--%>
-                    <%--</ul>--%>
+                    <div id="tree"></div>
                 </div>
             </div>
         </div>

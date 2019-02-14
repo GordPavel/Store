@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$.ajax("/rest/categories", {
+	$.ajax("/rest/tree", {
 		success: function (response) {
 			const html = $('#category').render(response);
 			$('#categories').html(html);

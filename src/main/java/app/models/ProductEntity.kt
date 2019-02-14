@@ -1,8 +1,8 @@
 package app.models
 
-import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.neo4j.ogm.annotation.*
 import org.neo4j.ogm.annotation.Properties
 import java.util.*
@@ -12,18 +12,24 @@ import java.util.function.Predicate
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class ProductEntity(
 		@Index(unique = true)
-		var name : String ,
+		override var name : String ,
 
 		@Property
 		var price : Double ,
 
-		@JsonBackReference
-		@Relationship(type = "product" , direction = Relationship.INCOMING)
-		var category : CategoryEntity
-                        ) {
+		@Property
+		var oldPrice : Double?
+                        ) : WithParent {
+
+	override var parent : CategoryEntity? = null
+		get() = category
 	@Id
 	@GeneratedValue
-	var id : Long? = null
+	override var id : Long? = null
+
+	@JsonManagedReference
+	@Relationship(type = "PRODUCT" , direction = Relationship.INCOMING)
+	lateinit var category : CategoryEntity
 
 	@Property
 	var visitorsCount : Int = 0
@@ -45,7 +51,7 @@ data class ProductEntity(
 }
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-data class ProductDTO(val name : String , val price : Double , val categoryId : Long ,
+data class ProductDTO(val id : Long , val name : String , val price : Double , val categoryId : Long ,
                       val properties : Map<String , String> = emptyMap())
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)

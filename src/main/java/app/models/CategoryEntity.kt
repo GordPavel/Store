@@ -3,28 +3,42 @@ package app.models
 import com.fasterxml.jackson.annotation.*
 import org.neo4j.ogm.annotation.*
 
+interface IdentifiedEntity {
+	var id : Long?
+	var name : String
+}
+
+interface WithParent : IdentifiedEntity {
+	var parent : CategoryEntity?
+}
+
 @NodeEntity(label = "category")
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder(value = ["id" , "name" , "parentCategory" , "properties" , "subCategories" , "products"])
 data class CategoryEntity(
 		@Index(unique = true)
-		var name : String ,
+		override var name : String ,
 
 		@JsonManagedReference
-		@Relationship(type = "subCategory")
+		@Relationship(type = "SUB_CATEGORY")
 		var subCategories : List<CategoryEntity> = emptyList() ,
 
 		@JsonBackReference
-		@Relationship(type = "subCategory" , direction = Relationship.INCOMING)
+		@Relationship(type = "SUB_CATEGORY" , direction = Relationship.INCOMING)
 		var parentCategory : CategoryEntity? = null ,
 
-		@Relationship(type = "product")
-		@JsonManagedReference
+		@Relationship(type = "PRODUCT")
+		@JsonBackReference
 		var products : List<ProductEntity> = emptyList()
-                         ) {
+                         ) : WithParent {
+
+	@JsonIgnore
+	override var parent : CategoryEntity? = null
+		get() = parentCategory
+
 	@Id
 	@GeneratedValue
-	var id : Long? = null
+	override var id : Long? = null
 
 	@JsonIgnore
 	@Version
@@ -42,6 +56,6 @@ data class CategoryEntity(
 	override fun toString() = "id: ${id ?: "unregistered"},name: $name"
 }
 
-data class CategoryDTO(val name : String , val subCategoriesIds : List<Long> = emptyList() ,
+data class CategoryDTO(val id : Long , val name : String , val subCategoriesIds : List<Long> = emptyList() ,
                        val parentCategoryId : Long? , val productsIds : List<Long> = emptyList() ,
                        val properties : Map<String , String> = emptyMap())

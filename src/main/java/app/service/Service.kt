@@ -1,8 +1,6 @@
 package app.service
 
-import app.models.CategoryDTO
-import app.models.CategoryEntity
-import app.models.ProductDTO
+import app.models.*
 import app.repositories.CategoryRepository
 import app.repositories.ProductRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,6 +25,39 @@ open class Service {
 	}
 
 	@Transactional(rollbackFor = [Throwable::class])
+	open fun modifyProduct(productDTO : ProductDTO) {
+		val product = productsRepository.findById(productDTO.id)
+				.orElseThrow { IllegalArgumentException("No product with id ${productDTO.id}") }
+		product.name = productDTO.name
+		product.price = productDTO.price
+		product.properties = productDTO.properties
+		val category =
+				categoryRepository.findById(productDTO.categoryId)
+						.orElseThrow { IllegalArgumentException("No category with id ${productDTO.id}") }
+		product.category = category
+		productsRepository.save(product)
+	}
+
+	@Transactional(rollbackFor = [Throwable::class])
+	open fun modifyCategory(categoryDTO : CategoryDTO) {
+		val category =
+				categoryRepository.findById(categoryDTO.id)
+						.orElseThrow { IllegalArgumentException("No category with id ${categoryDTO.id}") }
+		category.name = categoryDTO.name
+		category.properties = categoryDTO.properties
+		if(categoryDTO.parentCategoryId != null) {
+			if(categoryDTO.id == categoryDTO.parentCategoryId) throw java.lang.IllegalArgumentException("Category ${categoryDTO.id} can't be parent of itself")
+			val parent = categoryRepository.findById(categoryDTO.parentCategoryId)
+					.orElseThrow { IllegalArgumentException("No category with id ${categoryDTO.parentCategoryId}") }
+			category.parentCategory = parent
+		}
+		categoryRepository.save(category)
+	}
+
+	@Transactional(readOnly = true)
+	open fun getAll() : Iterable<CategoryEntity> = categoryRepository.findAll()
+
+	@Transactional(rollbackFor = [Throwable::class])
 	open fun saveCategory(categoryDTO : CategoryDTO) : CategoryEntity {
 		val parentCategory = findCategoryById(categoryDTO.parentCategoryId)
 		val subCategories = categoryRepository.findAllById(categoryDTO.subCategoriesIds)
@@ -38,10 +69,29 @@ open class Service {
 		return categoryRepository.save(newCategory)
 	}
 
+	@Transactional(rollbackFor = [Throwable::class])
+	open fun saveProduct(productDTO : ProductDTO) : ProductEntity {
+		val parentCategory =
+				findCategoryById(productDTO.categoryId)
+				?: throw IllegalArgumentException("No category with id ${productDTO.categoryId}")
+		val newProduct = ProductEntity(productDTO.name , productDTO.price , null).apply {
+			category = parentCategory
+			properties = productDTO.properties
+		}
+		return productsRepository.save(newProduct)
+	}
+
 	@Transactional(readOnly = true)
-	open fun getTree() : Iterable<CategoryEntity> {
-		val root = categoryRepository.findById(0 , 0).orElseThrow { IllegalStateException("No root category!!") }
-		return getTree(root)
+	open fun getAllParents(item : WithParent ,
+	                       parents : MutableList<CategoryEntity> = mutableListOf()) : MutableList<CategoryEntity> {
+		val parent = item.parent
+		return if(parent != null) {
+			val loadedParent =
+					categoryRepository
+							.findById(parent.id!!)
+							.orElseThrow { IllegalStateException("Something went wrong!!") }
+			getAllParents(loadedParent , parents).apply { add(parent) }
+		} else parents
 	}
 
 	@Transactional(readOnly = true)

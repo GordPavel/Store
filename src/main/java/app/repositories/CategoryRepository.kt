@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CategoryRepository : Neo4jRepository<CategoryEntity , Long> {
 
-	@Query("MATCH (cat) WHERE NOT (:category)-[:subCategory*1..1]->(cat:category) RETURN cat;")
+	@Query("MATCH (cat:category) WHERE NOT (:category)-[:SUB_CATEGORY]->(cat) RETURN cat;")
 	fun getRootCategories() : Iterable<CategoryEntity>
 
-	@Query("MATCH (parent:category)-[:subCategory*1..1]->(sub:category) WHERE id(parent)={0} RETURN sub;")
+	@Query("MATCH (parent:category)-[:SUB_CATEGORY*1..1]->(sub:category) WHERE id(parent)={0} RETURN sub;")
 	fun getSubCategoriesByParentId(@Param("id") id : Long) : Iterable<CategoryEntity>
 
 	@Secured("ROLE_ADMIN")

@@ -305,7 +305,8 @@
 			}
 		});
 		$('a.dropdown-toggle').click(function (e) {
-			e.stopPropagation();
+			if ($(e.target.parentElement).find('ul.dropdown-menu.dropdownhover-right').length > 0)
+				e.stopPropagation();
 		});
 	};
 	$(document).ready(window.setupDropDownHover)

@@ -1,29 +1,29 @@
 <script src="/js/onPage/menu.js"></script>
+<script src="/dropdownhover/js/dropdownhover.min.js"></script>
+<link href="/dropdownhover/css/dropdownhover.min.css" rel="stylesheet" type="text/css" media="all"/>
 <script id="subCategory" type="text/x-jsrender">
     {{if !subCategories || subCategories.length === 0 }}
-        <li><a href="/category?name={{>name}}">{{>name}}</a></li>
+        <li><a href="/category?id={{>id}}&name={{>name}}">{{>name}}</a></li>
     {{else}}
         <li class="dropdown">
-            <a href="/category?name={{>name}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">{{>name}}<b class="caret"></b></a>
+            <a href="/category?id={{>id}}&name={{>name}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">{{>name}}<b class="caret"></b></a>
             <ul class="dropdown-menu dropdownhover-right" role="menu">
                 {{for subCategories tmpl="#subCategory"/}}
             </ul>
         </li>
     {{/if}}
-
 </script>
 <script id="category" type="text/x-jsrender">
     {{if subCategories.length === 0 }}
-        <li><a href="/category?name={{>name}}">{{>name}}</a></li>
+        <li><a href="/category?id={{>id}}&name={{>name}}">{{>name}}</a></li>
     {{else}}
         <li class="dropdown">
-            <a href="/category?name={{>name}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">{{>name}}<b class="caret"></b></a>
+            <a href="/category?id={{>id}}&name={{>name}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">{{>name}}<b class="caret"></b></a>
             <ul class="dropdown-menu dropdownhover-bottom" role="menu">
                 {{for subCategories tmpl="#subCategory"/}}
             </ul>
         </li>
     {{/if}}
-
 </script>
 <nav class="navbar navbar-default" style="margin-bottom: 0" role="navigation">
     <div class="container-fluid">

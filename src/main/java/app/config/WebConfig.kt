@@ -11,14 +11,17 @@ import org.springframework.web.servlet.view.tiles3.TilesView
 @Configuration
 open class WebConfig : WebMvcConfigurer {
 	override fun addViewControllers(registry : ViewControllerRegistry) {
-		registry.addViewController("/").setViewName("index")
-		registry.addViewController("/index").setViewName("index")
-		registry.addViewController("/category").setViewName("category")
-		registry.addViewController("/product").setViewName("product")
-		registry.addViewController("/login").setViewName("login")
-		registry.addViewController("/wishList").setViewName("wishList")
-		registry.addViewController("/search").setViewName("search")
-		registry.addViewController("/registration").setViewName("registration")
+		registry.apply {
+			addViewController("/").setViewName("index")
+			addViewController("/index").setViewName("index")
+			addViewController("/category").setViewName("category")
+			addViewController("/product").setViewName("product")
+			addViewController("/login").setViewName("login")
+			addViewController("/wishList").setViewName("wishList")
+			addViewController("/search").setViewName("search")
+			addViewController("/registration").setViewName("registration")
+			addViewController("/admin").setViewName("admin")
+		}
 	}
 
 	@Bean(name = ["viewResolver"])

@@ -1,11 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
-<%--todo gordeev Путь --%>
+<script src="/js/onPage/breadcrumb.js"></script>
 <div class="products-breadcrumb">
     <div class="container">
-        <ul>
+        <ul id="breadcrumb">
             <li><a href="/">Домой</a></li>
-            <li><span>|</span></li>
-            <li class="active">Pet Food</li>
         </ul>
     </div>
 </div>

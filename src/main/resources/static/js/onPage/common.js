@@ -1,4 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
+const hashParams = new URLSearchParams('?' + window.location.hash.substring(1));
 let roles;
 $.ajax("/rest/authorities", {
 	success: function (response) {

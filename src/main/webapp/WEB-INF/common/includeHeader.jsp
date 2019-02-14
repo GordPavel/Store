@@ -8,7 +8,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- css -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/css/animate.min.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="/css/dropdownhover.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu" rel="stylesheet">
 
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
