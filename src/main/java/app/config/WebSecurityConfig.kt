@@ -46,7 +46,6 @@ open class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 		http
 				.exceptionHandling()
 				.defaultAuthenticationEntryPointFor(AuthenticationEntryPoint { _ , response , exception ->
-					// todo pavelgordeev Разные статусы в зависимости от ошибки
 					response.sendError(HttpServletResponse.SC_FORBIDDEN , exception.message)
 				} , AntPathRequestMatcher("/repository/**"))
 		http

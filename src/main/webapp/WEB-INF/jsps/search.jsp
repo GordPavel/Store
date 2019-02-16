@@ -4,6 +4,7 @@
 <%-- todo gordeev.p Разобраться, почему крашит --%>
 <%--<link rel="stylesheet" href="/slider/css/normalize.css">--%>
 <script src="/slider/js/ion.rangeSlider.min.js"></script>
+<script src="/js/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="/slider/css/ion.rangeSlider.min.css">
 <script src="/js/onPage/search.js"></script>
 <%@include file="templates/productsGrid.jsp" %>
@@ -14,10 +15,15 @@
             <div id="productChartRows">
                 <%-- место для продуктов --%>
             </div>
+            <nav aria-label="...">
+                <div id="pagination">
+
+                </div>
+            </nav>
         </div>
         <div class="col-md-4" style="background: lightgray; height : 100%">
             <div>
-                <button type="button" class="btn btn-outline-primary btn-lg">Поиск</button>
+                <button type="button" id="searchProducts" class="btn btn-outline-primary btn-lg">Поиск</button>
                 <div id="priceSlider">
                     <label for="slider"><span>Выбор цены</span></label>
                     <input type="text" id="slider" name="example_name" value=""/>

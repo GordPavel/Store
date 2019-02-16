@@ -12,16 +12,20 @@
 		        <div class="snipcart-item block">
 		            <div class="snipcart-thumb">
 		                <%--todo gordeev изображение --%>
-		                <a href="/product">
-		                 <img src="/images/57.png" alt=" " class="img-responsive"/>
-		                </a>
-		                <p> {{>name}}</p>
-	                    <h4>{{>price}} ₽
+		                <a href="/product?id={{>id}}">
+		                	<img src="/images/57.png" alt=" " class="img-responsive"/>
+		              	<a href="/product?id={{>id}}">
+		              		<p> {{>name}}</p>
+						</a>
+						<a href="/category?id={{>category.id}}&name={{>category.name}}">
+		              		<p>{{>category.name}}</p>
+						</a>
+		               	<h4>{{>price}} ₽
     	                    <%-- todo gordeev Старая цена --%>
 	                        <span>{{:oldPrice}} ₽</span>
 	                    </h4>
 	                    <%-- todo gordeev Просмотры --%>
-	                    <h4>Просмотров: {{:viewers}}</h4>
+	                    <h4>Просмотров: {{:visitorsCount}}</h4>
 	                </div>
 	            </div>
 	        </figure>

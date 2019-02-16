@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.Comparator.*
 import java.util.stream.Collectors.toList
-import kotlin.math.min
 
 @Service
 @Transactional
@@ -30,8 +29,10 @@ open class ProductsSearchService {
 	@Autowired
 	private lateinit var stemmer : Stemmer
 
+	data class ProductsList(val page : Page<ProductEntity> , val minCost : Double , val maxCost : Double)
+
 	@Transactional(readOnly = true)
-	open fun search(filter : SearchProductFilter , page : Pageable) : Page<ProductEntity> {
+	open fun search(filter : SearchProductFilter , page : Pageable) : ProductsList {
 		val predicate = filter.toPredicate()
 		val comparator = page.toProductComparator()
 
@@ -44,11 +45,13 @@ open class ProductsSearchService {
 					.filter { fitFunction(filter.searchString , it) > 0 }
 					.sorted(comparingDouble { fitFunction(filter.searchString , it) })
 		}
+		var final = products.collect(toList()).toMutableList()
+		val minCost = final.parallelStream().mapToDouble { it.price }.min().orElse(0.0)
+		val maxCost = final.parallelStream().mapToDouble { it.price }.max().orElse(10000.0)
+		val total = final.size.toLong()
+		if(page.isPaged) final = final.stream().skip(page.offset).limit(page.pageSize.toLong()).collect(toList())
 
-		val final = products.collect(toList())
-		val start = page.offset.toInt()
-		val end = min(start + page.pageSize , final.size)
-		return PageImpl(final.subList(start , end) , page , final.size.toLong())
+		return ProductsList(PageImpl(final , page , total) , minCost , maxCost)
 	}
 
 	private fun fitFunction(searchString : String , product : ProductEntity) : Double {

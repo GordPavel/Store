@@ -55,7 +55,7 @@ open class Service {
 	}
 
 	@Transactional(readOnly = true)
-	open fun getAll() : Iterable<CategoryEntity> = categoryRepository.findAll()
+	open fun getAll() : Iterable<CategoryEntity> = categoryRepository.findAll(0)
 
 	@Transactional(rollbackFor = [Throwable::class])
 	open fun saveCategory(categoryDTO : CategoryDTO) : CategoryEntity {

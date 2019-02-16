@@ -22,9 +22,9 @@
                 </div>
                 <div id="registrationForm" class="form" style="display: none">
                     <h2>Зарегистрироваться</h2>
-                    <form action="/registration" method="post">
+                    <form action="/users" method="post">
                         <div id="enterEmail" class="alert alert-danger" role="alert" style="display: none">
-                            Введите email для рецистрации
+                            Введите email для регистрации
                         </div>
                         <input id="registrationEmail" type="text" name="Username" placeholder="E-mail" required>
                         <input type="password" name="Password" placeholder="Пароль" required>

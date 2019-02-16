@@ -26,6 +26,9 @@
     </definition>
 
     <definition name="admin" template="/WEB-INF/tiles_templates/admin_template.jsp">
+        <put-attribute name="title" value="Панель администратора"/>
+        <put-attribute name="main" value="/WEB-INF/jsps/adminPage.jsp"/>
+        <put-attribute name="bodyHeader" value="/WEB-INF/common/header.jsp"/>
         <put-attribute name="includeHeader" value="/WEB-INF/common/includeHeader.jsp"/>
         <put-attribute name="includeFooter" value="/WEB-INF/common/includeFooter.jsp"/>
     </definition>

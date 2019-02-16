@@ -7,6 +7,7 @@
 </head>
 
 <body class="fuelux">
+<tiles:insertAttribute name="bodyHeader"/>
 <div class="container mainPart">
     <tiles:insertAttribute name="main"/>
 </div>

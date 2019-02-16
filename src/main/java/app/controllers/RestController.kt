@@ -55,9 +55,20 @@ open class RestController {
 	@GetMapping("/products" ,
 	            consumes = [APPLICATION_JSON_UTF8_VALUE] ,
 	            produces = [APPLICATION_JSON_UTF8_VALUE , APPLICATION_XML_VALUE])
-	open fun searchProducts(@RequestParam(required = false) searchProductFilter : SearchProductFilter ,
-	                        pageable : Pageable) =
-			productsSearchService.search(searchProductFilter , pageable)
+	open fun searchProducts(@RequestParam(required = false) searchString : String? ,
+	                        @RequestParam("ids[]" , required = false) ids : List<Long>? ,
+	                        @RequestParam("exceptIds[]" , required = false) exceptIds : List<Long>? ,
+	                        @RequestParam("categories[]" , required = false) categories : List<Long>? ,
+	                        @RequestParam(required = false) minPrice : Double? ,
+	                        @RequestParam(required = false) maxPrice : Double? ,
+	                        page : Pageable) =
+			productsSearchService.search(SearchProductFilter(searchString ,
+			                                                 ids ,
+			                                                 exceptIds ,
+			                                                 categories ,
+			                                                 minPrice ,
+			                                                 maxPrice) ,
+			                             page)
 
 	@GetMapping("/breadcrumb" , produces = [APPLICATION_JSON_UTF8_VALUE])
 	open fun breadcrumb(@RequestParam itemId : Long ,
